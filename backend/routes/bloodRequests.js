@@ -2,6 +2,11 @@
 
 const express = require('express')
 
+//from the bloodrequest controller the functions of these routes
+const {
+  createBloodRequest
+} = require('../controllers/bloodRequestController')
+
 const router = express.Router()
 
 //this route will get all the blood request table form
@@ -10,14 +15,12 @@ router.get('/', (req, res) => {
 })
 
 //get a single blood request
-router.get('/:id', (res, req) => {
+router.get('/:id', (req, res) => {
   res.json({mssg: 'GET a single bloodrequest'})
 })
 
-//create a new bloodRequest so post new request
-router.post('/', (req, res) => {
-  res.json({mssg: 'POST a new bloodrequest'})
-})
+//create a new bloodRequest so POST new request
+router.post('/', createBloodRequest)
 
 //DELETE a bloodRequest
 router.delete('/:id', (req, res) => {
