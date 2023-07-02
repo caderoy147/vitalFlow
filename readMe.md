@@ -1,6 +1,6 @@
 welcome to vital flow 
 
-HIWI SA PRESS NI THEN SA CODE PAG ADD
+HIWI SA!!! PRESS NI kannag lapis na icon THEN SA CODE PAG ADD
 
 
 functionality checklist
