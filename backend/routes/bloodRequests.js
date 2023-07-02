@@ -4,32 +4,30 @@ const express = require('express')
 
 //from the bloodrequest controller the functions of these routes
 const {
-  createBloodRequest
+  createBloodRequest,
+  getBloodRequests,
+  getSingleBloodRequest,
+  deleteBloodRequest,
+  updateBloodrequest
 } = require('../controllers/bloodRequestController')
 
 const router = express.Router()
 
 //this route will get all the blood request table form
-router.get('/', (req, res) => {
-  res.json({mssg: 'GET all bloodrequests'})
-})
+router.get('/', getBloodRequests)
 
-//get a single blood request
-router.get('/:id', (req, res) => {
-  res.json({mssg: 'GET a single bloodrequest'})
-})
+//GET/READ a single blood request
+router.get('/:id', getSingleBloodRequest)
 
-//create a new bloodRequest so POST new request
+//CREATE a new bloodRequest so POST new request
 router.post('/', createBloodRequest)
 
 //DELETE a bloodRequest
-router.delete('/:id', (req, res) => {
-  res.json({mssg: 'Delete a bloodrequest'})
-})
+router.delete('/:id', deleteBloodRequest)
 
-router.patch('/:id', (req, res) => {
-  res.json({mssg: 'Update a bloodrequest'})
-})
+
+//UPDATE a bloodRequest
+router.patch('/:id', updateBloodrequest)
 
 
 //router.get('/hello', () => {}) create routes like this
