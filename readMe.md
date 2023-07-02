@@ -1,10 +1,14 @@
 welcome to vital flow 
+
+HIWI SA PRESS NI THEN SA CODE PAG ADD
+
+
 functionality checklist
  pili lang 
 ❌= abandon functionality
 ✓ = done!!! good job <3
 
-databese
+database
 [✓] database for request blood
 [] database for user
 
