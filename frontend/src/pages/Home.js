@@ -1,5 +1,10 @@
 import { useEffect, useState }from "react"
 
+// components
+import BloodRequestDetails from '../components/BloodRequestDetails'
+import BloodRequestForm from '../components/BloodRequestForm'
+
+
 const Home = () => {
   const [bloodRequests, setBloodRequests] = useState(null)
 
@@ -23,11 +28,10 @@ const Home = () => {
     <div class="home">
       <div class="bloodRequests">
         {bloodRequests && bloodRequests.map((bloodRequest) => (
-          <p key={bloodRequest._id}>
-            {bloodRequest.patientName},{bloodRequest.bloodType},{bloodRequest.location},  {bloodRequest.phoneNumber}</p>
-         
+          <BloodRequestDetails key={bloodRequest._id} bloodRequest={bloodRequest} />
         ))}
       </div>
+      <BloodRequestForm/>
     </div>
   )
 }
