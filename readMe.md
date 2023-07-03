@@ -47,3 +47,6 @@ user
 []update profile
 []enter homepage
 
+NET NINJA tutorail mern
+[✓] tutorial 1
+[] tutorial 2
