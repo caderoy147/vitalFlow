@@ -1,4 +1,5 @@
-import { useEffect, useState }from "react"
+import { useEffect }from "react"
+import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
 
 // components
 import BloodRequestDetails from '../components/BloodRequestDetails'
@@ -6,7 +7,7 @@ import BloodRequestForm from '../components/BloodRequestForm'
 
 
 const Home = () => {
-  const [bloodRequests, setBloodRequests] = useState(null)
+  const {bloodRequests, dispatch} = useBloodRequestsContext()
 
 
   useEffect(()=>{
@@ -15,18 +16,19 @@ const Home = () => {
       const json = await response.json()
 
       if(response.ok){
-        setBloodRequests(json)
+        dispatch({type: 'SET_BLOODREQUESTS', payload: json})
       }
     }
 
     fetchBloodRequests()
-    
-  }, []) // empty array so that is dosent keep on searching for blood, only refreash
+   
+ 
+  }, [dispatch]) //depedency array ng dispatch if that gets eddited something happens, react things
 
 
   return (
-    <div class="home">
-      <div class="bloodRequests">
+    <div className="home">
+      <div className="bloodRequests">
         {bloodRequests && bloodRequests.map((bloodRequest) => (
           <BloodRequestDetails key={bloodRequest._id} bloodRequest={bloodRequest} />
         ))}

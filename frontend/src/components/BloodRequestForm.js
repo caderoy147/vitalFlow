@@ -1,12 +1,16 @@
 import { useState } from "react"
+import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
 
 
 const BloodRequestForm = () => {
+  const { dispatch } = useBloodRequestsContext()
+
   const [patientName, setPatientName] = useState('')
   const [bloodType, setBloodType] = useState('')
   const [location, setLocation] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -24,6 +28,7 @@ const BloodRequestForm = () => {
 
     if (!response.ok) {
       setError(json.error)
+      setEmptyFields(json.emptyFields)
     }
     if (response.ok) {
       setPatientName('')
@@ -31,7 +36,9 @@ const BloodRequestForm = () => {
       setLocation('')
       setPhoneNumber('')
       setError(null)
+      setEmptyFields([])
       console.log('new blood request added', json)
+      dispatch({type:'CREATE_BLOODREQUEST', payload: json})
     }
   }
  
@@ -44,6 +51,7 @@ const BloodRequestForm = () => {
        type="text"
        onChange={(e) => setPatientName(e.target.value)}
        value={patientName}
+       className={emptyFields.includes('patientName') ? 'error' : ''}
       />
 
       <label>Blood Type:</label>
@@ -51,6 +59,7 @@ const BloodRequestForm = () => {
        type="text"
        onChange={(e) => setBloodType(e.target.value)}
        value={bloodType}
+       className={emptyFields.includes('bloodType') ? 'error' : ''}
       />
 
       <label>location:</label>
@@ -58,6 +67,7 @@ const BloodRequestForm = () => {
        type="text"
        onChange={(e) => setLocation(e.target.value)}
        value={location}
+       className={emptyFields.includes('location') ? 'error' : ''}
       />
 
 

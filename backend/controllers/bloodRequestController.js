@@ -33,6 +33,21 @@ const getSingleBloodRequest = async (req,res)=>{
 const createBloodRequest = async (req,res) => {
   const {patientName, bloodType, location, phoneNumber} = req.body
 
+  let emptyFields = []
+
+  if(!patientName) {
+    emptyFields.push('patientName')
+  }
+  if(!bloodType) {
+    emptyFields.push('bloodType')
+  }
+  if(!location) {
+    emptyFields.push('location')
+  }
+  if(emptyFields.length > 0) {
+    return res.status(400).json({error: 'Please fill in missing fields in red', emptyFields})
+  }
+
 
   // add doc to DB this is a function that adss blood requ to db it is called in routes folder
   try{
