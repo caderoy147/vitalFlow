@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
+import { useAuthContext } from '../hooks/useAuthContext'
 
 
 const BloodRequestForm = () => {
   const { dispatch } = useBloodRequestsContext()
+  const { user } = useAuthContext()
 
   const [patientName, setPatientName] = useState('')
   const [bloodType, setBloodType] = useState('')
@@ -14,6 +16,11 @@ const BloodRequestForm = () => {
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
+    
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
 
     const bloodRequest = {patientName, bloodType, location, phoneNumber}
 
@@ -21,7 +28,8 @@ const BloodRequestForm = () => {
       method: 'POST',
       body: JSON.stringify(bloodRequest),
       headers: {
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          'Authorization': `Bearer ${user.token}`
       }
     })
     const json = await response.json()

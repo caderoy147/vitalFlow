@@ -1,5 +1,6 @@
 import { useEffect }from "react"
 import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import BloodRequestDetails from '../components/BloodRequestDetails'
@@ -8,11 +9,16 @@ import BloodRequestForm from '../components/BloodRequestForm'
 
 const Home = () => {
   const {bloodRequests, dispatch} = useBloodRequestsContext()
+  const {user} = useAuthContext()
 
 
   useEffect(()=>{
     const fetchBloodRequests = async () => {
-      const response = await fetch('/api/bloodRequests')
+      const response = await fetch('/api/bloodRequests',{
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        },
+      })
       const json = await response.json()
 
       if(response.ok){
@@ -20,10 +26,11 @@ const Home = () => {
       }
     }
 
-    fetchBloodRequests()
-   
+    if (user) {
+      fetchBloodRequests()
+    }
  
-  }, [dispatch]) //depedency array ng dispatch if that gets eddited something happens, react things
+  }, [dispatch, user]) //depedency array ng dispatch if that gets eddited something happens, react things
 
 
   return (

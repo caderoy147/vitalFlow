@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bloodRequestRoutes = require('./routes/bloodRequests')
+const userRoutes = require('./routes/user')
 
 
 //express app
@@ -24,6 +25,7 @@ app.use((req, res, next)=>{
 
 //routers
 app.use('/api/bloodRequests',bloodRequestRoutes)
+app.use('/api/user',userRoutes)
 
 
 //Connect to DB this allows our program to have cloud database using mongoose. mongoose has added functionality too
