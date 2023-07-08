@@ -168,6 +168,7 @@ form.signup, form.login {
 
 .select-dropdown.error {
   border-color: red;
+}
 
 .home{
   display: inline;

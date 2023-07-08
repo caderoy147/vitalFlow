@@ -13,6 +13,9 @@ const BloodRequestForm = ({ onClose }) => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (!user) {
       setError("You must be logged in");
       return;
@@ -33,8 +36,7 @@ const BloodRequestForm = ({ onClose }) => {
     if (!response.ok) {
       setError(json.error);
       setEmptyFields(json.emptyFields);
-    }
-    if (response.ok) {
+    } else {
       setPatientName("");
       setBloodType("");
       setLocation("");
@@ -65,11 +67,10 @@ const BloodRequestForm = ({ onClose }) => {
       />
 
       <label>Blood Type:</label>
-
       <select
         onChange={(e) => setBloodType(e.target.value)}
         value={bloodType}
-        className={`select-dropdown ${emptyFields.includes('bloodType') ? 'error' : ''}`}
+        className={`select-dropdown ${emptyFields.includes("bloodType") ? "error" : ""}`}
       >
         <option value="">Select a blood type</option>
         <option value="A+">A+</option>
@@ -83,40 +84,6 @@ const BloodRequestForm = ({ onClose }) => {
       </select>
 
       <label>Location:</label>
-      <input 
-       type="text"
-       onChange={(e) => setLocation(e.target.value)}
-       value={location}
-       className={emptyFields.includes('location') ? 'error' : ''}
-      />
-
-
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'initial', justifyContent: 'flex-start' }}>
-        <label style={{ marginBottom: '5px' }}>Phone Number:</label>
-        <div style={{ position: 'relative' }}>
-          <span style={{ position: 'absolute', left: '37px', top: '50%', transform: 'translateY(-70%)' }}>+63</span>
-          <input
-            type="text"
-            maxLength={10} // Added maxLength attribute to limit characters
-            onChange={(e) => {
-              const input = e.target.value;
-              const phoneNumber = input.slice(0, 10); // Limit the input to first 10 characters
-              setPhoneNumber(phoneNumber);
-            }}
-            value={phoneNumber}
-          />
-        </div>
-      </div>
-
-
-      <input
-        type="text"
-        onChange={(e) => setBloodType(e.target.value)}
-        value={bloodType}
-        className={emptyFields.includes("bloodType") ? "error" : ""}
-      />
-
-      <label>location:</label>
       <input
         type="text"
         onChange={(e) => setLocation(e.target.value)}
@@ -124,13 +91,17 @@ const BloodRequestForm = ({ onClose }) => {
         className={emptyFields.includes("location") ? "error" : ""}
       />
 
-      <label>phoneNumber:</label>
+      <label>Phone Number:</label>
       <input
-        type="number"
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        type="text"
+        maxLength={10}
+        onChange={(e) => {
+          const input = e.target.value;
+          const phoneNumber = input.slice(0, 10);
+          setPhoneNumber(phoneNumber);
+        }}
         value={phoneNumber}
       />
-
 
       <button>Add Blood Request</button>
       {error && <div className="error">{error}</div>}
