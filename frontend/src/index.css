@@ -145,6 +145,29 @@ nav button {
   text-decoration: underline;
 }
 
+
+.container h1 {
+  margin: 0%;
+  padding: 0%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Vital {
+  margin-bottom: -0.6em;
+  padding: 0;;
+  color: #F00;;
+}
+.Flow {
+  margin-top: 0em;
+  padding: 0;
+  color: #B70000;
+}
+
+
+
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;

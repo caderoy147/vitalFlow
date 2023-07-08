@@ -15,11 +15,14 @@ const Navbar = () => {
    <header>
     <div className="container">
       <Link to='/'>
-      <h1>Vital Flow</h1>
+      <h1><span className='Vital'>Vital</span>
+      <span className='Flow'>Flow</span></h1>
       </Link>
       <ul class = "navi">
-        <li>Vital Flow</li>
-        <li>Find Matching Donors</li>
+        <li>Volunteer</li>
+        <li>Donate</li>
+        <li>FAQs</li>
+        <li>About us</li>
         </ul>
       <nav>
          {user && (
