@@ -15,7 +15,10 @@ const Navbar = () => {
    <header>
     <div className="container">
       <Link to='/'>
-        <h1>Vital Flow</h1>
+        <ul class = "navi">
+        <li>Vital Flow</li>
+        <li>Find Matching Donors</li>
+        </ul>
       </Link>
       <nav>
          {user && (

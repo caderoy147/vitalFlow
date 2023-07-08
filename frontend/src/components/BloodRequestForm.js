@@ -13,6 +13,7 @@ const BloodRequestForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
+  
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -63,14 +64,23 @@ const BloodRequestForm = () => {
       />
 
       <label>Blood Type:</label>
-      <input 
-       type="text"
-       onChange={(e) => setBloodType(e.target.value)}
-       value={bloodType}
-       className={emptyFields.includes('bloodType') ? 'error' : ''}
-      />
+      <select
+        onChange={(e) => setBloodType(e.target.value)}
+        value={bloodType}
+        className={`select-dropdown ${emptyFields.includes('bloodType') ? 'error' : ''}`}
+      >
+        <option value="">Select a blood type</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
 
-      <label>location:</label>
+      <label>Location:</label>
       <input 
        type="text"
        onChange={(e) => setLocation(e.target.value)}
@@ -79,12 +89,23 @@ const BloodRequestForm = () => {
       />
 
 
-      <label>phoneNumber:</label>
-      <input 
-       type="number"
-       onChange={(e) => setPhoneNumber(e.target.value)}
-       value={phoneNumber}
-      />
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'initial', justifyContent: 'flex-start' }}>
+        <label style={{ marginBottom: '5px' }}>Phone Number:</label>
+        <div style={{ position: 'relative' }}>
+          <span style={{ position: 'absolute', left: '37px', top: '50%', transform: 'translateY(-70%)' }}>+63</span>
+          <input
+            type="text"
+            maxLength={10} // Added maxLength attribute to limit characters
+            onChange={(e) => {
+              const input = e.target.value;
+              const phoneNumber = input.slice(0, 10); // Limit the input to first 10 characters
+              setPhoneNumber(phoneNumber);
+            }}
+            value={phoneNumber}
+          />
+        </div>
+      </div>
+
 
 
       <button>Add Blood Request</button>

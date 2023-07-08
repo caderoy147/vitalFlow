@@ -14,6 +14,7 @@ body {
 header {
   background: #fff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -137,6 +138,11 @@ nav button {
   margin-left: 10px;
 }
 
+.navi li{
+  display:inline;
+  padding: 16px;
+  text-decoration: underline;
+}
 
 /* auth forms */
 form.signup, form.login {
@@ -145,4 +151,19 @@ form.signup, form.login {
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+.select-dropdown {
+  /* Add your desired styles here */
+  width: 143px;
+  padding: 10px;
+  margin-left: 70px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.select-dropdown.error {
+  border-color: red;
 }
