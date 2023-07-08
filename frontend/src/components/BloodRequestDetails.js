@@ -31,7 +31,7 @@ const BloodRequestDetails = ({ bloodRequest }) => {
       <h4>{bloodRequest.patientName}</h4>
       <p><strong>Blood Type: </strong>{bloodRequest.bloodType}</p>
       <p><strong>Location: </strong>{bloodRequest.location}</p>
-      <p><strong>Phone Number: </strong>{bloodRequest.phoneNumber}</p>
+      <p><strong>Phone Number </strong>:+63{bloodRequest.phoneNumber}</p>
       <p>{formatDistanceToNow(new Date(bloodRequest.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
