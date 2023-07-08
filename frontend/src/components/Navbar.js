@@ -15,11 +15,12 @@ const Navbar = () => {
    <header>
     <div className="container">
       <Link to='/'>
-        <ul class = "navi">
+      <h1>Vital Flow</h1>
+      </Link>
+      <ul class = "navi">
         <li>Vital Flow</li>
         <li>Find Matching Donors</li>
         </ul>
-      </Link>
       <nav>
          {user && (
             <div>
