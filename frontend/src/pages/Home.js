@@ -3,19 +3,19 @@ import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import BloodRequestDetails from "../components/BloodRequestDetails";
 import BloodRequestForm from "../components/BloodRequestForm";
-
-// Import the SVG icon
+import ProfileComponent from "../components/ProfileComponent";
 import DonateIcon from "../assets/icons/bx_donate-blood.svg";
 import RequestIcon from "../assets/icons/material-symbols_search.svg";
 import HistoryIcon from "../assets/icons/tabler_book.svg";
+import axios from "axios";
 
 const Home = () => {
   const { bloodRequests, dispatch } = useBloodRequestsContext();
   const { user } = useAuthContext();
-
   const [showForm, setShowForm] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isButtonBlurred, setIsButtonBlurred] = useState(false);
+  const [firstName, setFirstName] = useState("");
 
   useEffect(() => {
     const fetchBloodRequests = async () => {
@@ -31,8 +31,22 @@ const Home = () => {
       }
     };
 
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get('/api/profile', {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        setFirstName(response.data.firstName);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     if (user) {
       fetchBloodRequests();
+      fetchProfile();
     }
   }, [dispatch, user]);
 
@@ -54,7 +68,7 @@ const Home = () => {
     <div className="home">
       <div className="containerAllProfile">
         <div className="stats">
-          <h3>HI Benedict</h3>
+          <h3>HI {firstName}</h3>
         </div>
         <div className={`buttonContainer ${isButtonBlurred ? "blurred" : ""}`}>
           <button
@@ -62,7 +76,7 @@ const Home = () => {
             onClick={toggleFormVisibility}
           >
             <div>
-              <img src={DonateIcon} alt="Donate icon" />
+              <img src={DonateIcon} alt="Donate icons" />
               <span>Donate</span>
             </div>
           </button>
@@ -80,7 +94,6 @@ const Home = () => {
               <img src={HistoryIcon} alt="history icon" />
               <span>History</span>
             </div>
-          
           </button>
         </div>
       </div>
@@ -97,9 +110,10 @@ const Home = () => {
             ))}
         </div>
       </div>
+      <ProfileComponent />
     </div>
   );
 };
 
 export default Home;
-//hi
+

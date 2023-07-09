@@ -1,21 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-// we import the context 
+// Import the context providers
 import { BloodRequestsContextProvider } from './context/BloodRequestContext';
-import { AuthContextProvider } from './context/AuthContext'
+import { AuthContextProvider } from './context/AuthContext';
+import { ProfileContextProvider } from './context/ProfileContext';
 
+const root = createRoot(document.getElementById('root'));
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <BloodRequestsContextProvider>
+  <AuthContextProvider>
+    <BloodRequestsContextProvider>
+      <ProfileContextProvider>
         <App />
-      </BloodRequestsContextProvider>
-    </AuthContextProvider>
-  </React.StrictMode>
+      </ProfileContextProvider>
+    </BloodRequestsContextProvider>
+  </AuthContextProvider>
 );
