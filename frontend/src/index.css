@@ -387,46 +387,55 @@ input.error {
 .password-wrapper {
   position: relative;
 }
+.password-wrapper .password-input {
+  position: relative;
+}
+.password-wrapper .password-input input[type="password"],
+.password-wrapper .password-input input[type="text"] {
+  width: 100%;
+  padding-right: 30px; /* Add space for the icon */
+}
 
 .password-wrapper .forgot-password {  
   position: absolute;
-  top: 45px;
+  top: 35px;
   bottom: 0;
-  right: 0;
+  right: 145px;
   font-size: 12px;
-  color: #555; /* Customize the link color */
-  text-decoration: none; /* Remove the underline from the link */
-  /* Add any additional styling properties for the link */
-  /* Add any additional styling properties for the link */
+  color: #555;
+  text-decoration: none;
 }
+
 .password-wrapper input[type="password"],
 .password-wrapper input[type="text"] {
   width: 50%;
-  padding-right: 30px; /* Add space for the checkbox */
+  padding-right: 30px;
 }
-.password-wrapper input[type="checkbox"] {
-  position: absolute;
-  top: 105%;
-  right: 90px;
-  transform: translateY(-50%);
-}
+
 .password-wrapper label.show {
-  margin-left: 5px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
+
 .password-wrapper a.forgot-password {
   display: block;
   margin-top: 10px;
 }
+
 .password-wrapper button {
   margin-top: 20px;
 }
+
 .password-wrapper div.error {
   color: red;
   margin-top: 10px;
 }
 
 .password-wrapper .forgot-password:hover {
-  color: #f00; /* Customize the link color on hover */
+  color: #f00;
 }
 
 /* navbar */
@@ -656,11 +665,7 @@ h3{
   padding-top: 10%;
 }
 .show{
-  text-align: left;
-  position:sticky;
-  top: 0px;
-  bottom: 50;
-  right: 0;
+  position:relative;
   font-size: 12px;
   color: #555; /* Customize the link color */
   text-decoration: none; /* Remove the underline from the link */
@@ -669,8 +674,8 @@ h3{
 }
 .password-wrapper label.show {
   position: absolute;
-  top: 40px;
-  left: 100px;
+  top: 20px;
+  left: 275px;
 }
 
 .Vital {
