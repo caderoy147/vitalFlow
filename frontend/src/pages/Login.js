@@ -18,11 +18,13 @@ const Login = () => {
       <h3>LOG IN TO YOUR ACCOUNT</h3>
       
       <label></label>
+
       <input 
         type="email" 
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)} 
         value={email} 
+
       />
       
       <label></label>

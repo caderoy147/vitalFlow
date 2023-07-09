@@ -76,7 +76,7 @@ const Home = () => {
             onClick={toggleFormVisibility}
           >
             <div>
-              <img src={DonateIcon} alt="Donate icon" />
+              <img src={DonateIcon} alt="Donate icons" />
               <span>Donate</span>
             </div>
           </button>

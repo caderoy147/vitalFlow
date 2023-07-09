@@ -34,6 +34,52 @@ header a {
   max-height: 80%;
 }
 
+/* LOG IN / SIGN UP */
+.logIn,
+.signUp {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+}
+.noAcc {
+  color: rgb(255, 0, 0); /* Customize the link color */
+  text-decoration: underline; /* Add underline to the link */
+  cursor: pointer; /* Add pointer cursor on hover */
+  margin: 0 5px;
+}
+
+.noAcc:hover {
+  color: rgb(145, 142, 142); /* Customize the link color on hover */
+}
+/* OR SIGNIN*/
+.div2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px; /* Adjust the height of the div as needed */
+}
+
+.OR {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  line-height: 0;
+  margin: 20px ;
+  color: #777; /* Customize the text color */
+}
+
+.OR::before,
+.OR::after {
+  content: "";
+  flex-grow: 1;
+  border-bottom: 1px solid #777; /* Customize the line color */
+  margin: 0 10px;
+}
+
+
 /* homepage */
 .home {
   display: grid;
