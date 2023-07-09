@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProfilePage from './pages/ProfilePage'; // Add this import statement for the ProfilePage component
 
+
 function App() {
   const [ user2 , setUser ] = useState({});
   function handleCallbackResponse(response) {
@@ -37,10 +38,9 @@ function App() {
 
   return (
     <div className="App">
-      <div id = "signInDiv"></div>
-      { user2 &&
-      <div>
-        
+      
+
+      
       <BrowserRouter>
       <Navbar />
       <img src = {user2.picture}></img>
@@ -54,8 +54,7 @@ function App() {
         
       </div> 
     </BrowserRouter>
-    </div>
-      }
+      
       
     </div>
   );
