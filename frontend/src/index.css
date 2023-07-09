@@ -388,7 +388,7 @@ input.error {
   position: relative;
 }
 
-.password-wrapper .forgot-password {
+.password-wrapper .forgot-password {  
   position: absolute;
   top: 45px;
   bottom: 0;
@@ -398,6 +398,31 @@ input.error {
   text-decoration: none; /* Remove the underline from the link */
   /* Add any additional styling properties for the link */
   /* Add any additional styling properties for the link */
+}
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+  width: 50%;
+  padding-right: 30px; /* Add space for the checkbox */
+}
+.password-wrapper input[type="checkbox"] {
+  position: absolute;
+  top: 105%;
+  right: 90px;
+  transform: translateY(-50%);
+}
+.password-wrapper label.show {
+  margin-left: 5px;
+}
+.password-wrapper a.forgot-password {
+  display: block;
+  margin-top: 10px;
+}
+.password-wrapper button {
+  margin-top: 20px;
+}
+.password-wrapper div.error {
+  color: red;
+  margin-top: 10px;
 }
 
 .password-wrapper .forgot-password:hover {
@@ -629,4 +654,32 @@ h3{
   font-weight: normal;
   line-height: 1;
   padding-top: 10%;
+}
+.show{
+  text-align: left;
+  position:sticky;
+  top: 0px;
+  bottom: 50;
+  right: 0;
+  font-size: 12px;
+  color: #555; /* Customize the link color */
+  text-decoration: none; /* Remove the underline from the link */
+  /* Add any additional styling properties for the link */
+  /* Add any additional styling properties for the link */
+}
+.password-wrapper label.show {
+  position: absolute;
+  top: 40px;
+  left: 100px;
+}
+
+.Vital {
+  margin-bottom: -0.6em;
+  padding: 0;;
+  color: #F00;;
+}
+.Flow {
+  margin-top: 0em;
+  padding: 0;
+  color: #B70000;
 }
