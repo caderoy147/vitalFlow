@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
-import BloodRequestDetails from "../components/BloodRequestDetails";
-import BloodRequestForm from "../components/BloodRequestForm";
-import axios from "axios";
+import React, { useState, useEffect, useRef } from 'react';
+import { useBloodRequestsContext } from '../hooks/useBloodRequestsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
+import BloodRequestDetails from '../components/BloodRequestDetails';
+import BloodRequestForm from '../components/BloodRequestForm';
+import axios from 'axios';
+
+
 
 //icons
-import DonateIcon from "../assets/icons/bx_donate-blood.svg";
-import RequestIcon from "../assets/icons/material-symbols_search.svg";
-import HistoryIcon from "../assets/icons/tabler_book.svg";
-import CalendarIcon from "../assets/icons/calendar.svg";
-import CheckMarkIcon from "../assets/icons/checkmark.svg";
-import BloodDropIcon from "../assets/icons/blooddrop.svg";
+import DonateIcon from '../assets/icons/bx_donate-blood.svg';
+import RequestIcon from '../assets/icons/material-symbols_search.svg';
+import HistoryIcon from '../assets/icons/tabler_book.svg';
+import CalendarIcon from '../assets/icons/calendar.svg';
+import CheckMarkIcon from '../assets/icons/checkmark.svg';
+import BloodDropIcon from '../assets/icons/blooddrop.svg';
 
 const Home = () => {
   const { bloodRequests, dispatch } = useBloodRequestsContext();
@@ -19,12 +21,15 @@ const Home = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isButtonBlurred, setIsButtonBlurred] = useState(false);
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [bloodBagsDonated, setBloodBagsDonated] = useState(0);
+  const [available, setAvailable] = useState("");
+  const [donationCooldown, setDonationCooldown] = useState("");
   const componentRef = useRef(null);
 
   useEffect(() => {
     const fetchBloodRequests = async () => {
-      const response = await fetch("/api/bloodRequests", {
+      const response = await fetch('/api/bloodRequests', {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -32,7 +37,7 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "SET_BLOODREQUESTS", payload: json });
+        dispatch({ type: 'SET_BLOODREQUESTS', payload: json });
       }
     };
 
@@ -44,6 +49,9 @@ const Home = () => {
           },
         });
         setFirstName(response.data.firstName);
+        setBloodBagsDonated(response.data.bloodBagsDonated);
+        setAvailable(response.data.available);
+        setDonationCooldown(response.data.donationCooldown);
       } catch (error) {
         console.error(error);
       }
@@ -58,7 +66,7 @@ const Home = () => {
   useEffect(() => {
     if (showForm || showDetails) {
       // Scroll to the component when it is shown
-      componentRef.current.scrollIntoView({ behavior: "smooth" });
+      componentRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [showForm, showDetails]);
 
@@ -78,6 +86,10 @@ const Home = () => {
     setShowForm(false);
   };
 
+  const handleCloseAllDetails = () => {
+    setShowDetails(false);
+  };
+
   return (
     <div className="home">
       <div className="containerAllProfile">
@@ -89,21 +101,21 @@ const Home = () => {
           <div className="statsData">
             <div className="bloodBag">
               <img src={BloodDropIcon} alt="Donate icon" />
-              <h2>Blood Bags</h2>
+              <h2>{bloodBagsDonated} Blood Bags </h2>
             </div>
             <div className="avail">
               <img src={CheckMarkIcon} alt="Donate icon" />
-              <h2>AVAILABLE</h2>
+              <h2>{available ? 'AVAILABLE' : 'NOT AVAILABLE'}</h2>
             </div>
             <div className="calendarNext">
               <img src={CalendarIcon} alt="Donate icon" />
-              <h2>DAYS</h2>
+              <h2>{donationCooldown} DAYS</h2>
             </div>
           </div>
         </div>
-        <div className={`buttonContainer ${isButtonBlurred ? "blurred" : ""}`}>
+        <div className={`buttonContainer ${isButtonBlurred ? 'blurred' : ''}`}>
           <button
-            className={`requestButton ${showDetails ? "active" : ""}`}
+            className={`requestButton ${showDetails ? 'active' : ''}`}
             onClick={toggleDetailsVisibility}
           >
             <div>
@@ -112,7 +124,7 @@ const Home = () => {
             </div>
           </button>
           <button
-            className={`detailsButton ${showForm ? "active" : ""}`}
+            className={`detailsButton ${showForm ? 'active' : ''}`}
             onClick={toggleFormVisibility}
           >
             <div>
@@ -129,16 +141,25 @@ const Home = () => {
         </div>
       </div>
       <div className="containerHome">
-        {showForm && <BloodRequestForm onClose={handleFormClose} />}
         <div className="bloodRequests" ref={componentRef}>
-          {showDetails &&
-            bloodRequests &&
-            bloodRequests.map((bloodRequest) => (
-              <BloodRequestDetails
-                key={bloodRequest._id}
-                bloodRequest={bloodRequest}
-              />
-            ))}
+          {showDetails && bloodRequests.length > 0 && (
+            <>
+              <button className="exit-button" onClick={handleCloseAllDetails}>
+                  Close All
+                </button>
+              <div className="details-container">
+                <div className="details-scroll">
+                  {bloodRequests.map((bloodRequest) => (
+                    <BloodRequestDetails
+                      key={bloodRequest._id}
+                      bloodRequest={bloodRequest}
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+          {showForm && <BloodRequestForm onClose={handleFormClose} />}
         </div>
       </div>
     </div>
