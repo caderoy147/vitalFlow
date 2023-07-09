@@ -1,6 +1,8 @@
 import { useLogin } from "../hooks/useLogin";
-
-
+import React, { useEffect, useState } from 'react';
+import jwt_decode from "jwt-decode";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,13 +15,12 @@ const Login = () => {
     await login(email, password);
   };
 
-  const [ user2 , setUser ] = useState({});
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
-    setUser(userObject);
   }
+
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -29,8 +30,8 @@ const Login = () => {
 
     google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
-      {theme: "outline", size: "large"}
-    )
+      { theme: "outline", size: "large" }
+    );
   }, []);
 
   const togglePasswordVisibility = () => {
@@ -44,18 +45,20 @@ const Login = () => {
       </div>
       <h3 className="LUG">LOG IN TO YOUR ACCOUNT</h3>
       <div className="form-wrapper">
-        <label></label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
+          id="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
 
-        <label></label>
+        <label htmlFor="password">Password</label>
         <div className="password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
+            id="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -72,9 +75,9 @@ const Login = () => {
         <p className="OR"> OR </p>
         <p className="Signwith"> Sign in with </p>
         <div className="image-wrapper2">
-          <img href="" src="./images/google.png" alt="Google" className="img2" />
+          <img src="./images/google.png" alt="Google" className="img2" />
           <div id="signInDiv"></div>
-          <img href="" src="./images/ms.png" alt="MS" className="img3" />
+          <img src="./images/ms.png" alt="MS" className="img3" />
         </div>
       </div>
       <p className="Signwith"> Don't have an account? <a href="/signup" className="noAcc"> Sign up</a></p>
