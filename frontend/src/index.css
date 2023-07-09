@@ -49,7 +49,9 @@ header a {
   cursor: pointer; /* Add pointer cursor on hover */
   margin: 0 5px;
 }
-
+.noAcc{
+  
+}
 .noAcc:hover {
   color: rgb(145, 142, 142); /* Customize the link color on hover */
 }
