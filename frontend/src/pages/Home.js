@@ -4,6 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import BloodRequestDetails from "../components/BloodRequestDetails";
 import BloodRequestForm from "../components/BloodRequestForm";
 
+
 // Import the SVG icon
 import DonateIcon from "../assets/icons/bx_donate-blood.svg";
 import RequestIcon from "../assets/icons/material-symbols_search.svg";
@@ -62,7 +63,7 @@ const Home = () => {
             onClick={toggleFormVisibility}
           >
             <div>
-              <img src={DonateIcon} alt="Donate icon" />
+              <img src={DonateIcon} alt="Donate icons" />
               <span>Donate</span>
             </div>
           </button>
