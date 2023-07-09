@@ -18,10 +18,10 @@ const Navbar = () => {
       <h1><span className='Vital'>Vital</span>
       <span className='Flow'>Flow</span></h1>
       </Link>
-      <ul class = "navi">
+      <ul className = "navi">
         <li>Volunteer</li>
         <li>Donate</li>
-        <li>FAQs</li>
+        <Link to="/profile">Profile</Link>
         <li>About us</li>
         </ul>
       <nav>

@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const profileController = require('../controllers/profileController');
+const requireAuth = require('../middleware/requireAuth'); // Add this line to import the requireAuth middleware
 
 // Get user profile
-router.get('/', profileController.getUserProfile);
+router.get('/', requireAuth, profileController.getUserProfile);
 
 // Create user profile
-router.post('/', profileController.createUserProfile);
+router.post('/', requireAuth, profileController.createUserProfile);
 
 // Update user profile
-router.put('/:id', profileController.updateUserProfile);
+router.put('/:id', requireAuth, profileController.updateUserProfile);
 
 module.exports = router;

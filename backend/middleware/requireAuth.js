@@ -12,8 +12,7 @@ const requireAuth = async (req, res, next) => {
   const token = authorization.split(' ')[1];
 
   try {
-    const { _id } = jwt.verify(token, process.env.SECRET);
-
+    const { _id } = jwt.verify(token, process.env.SECRET); // Ensure process.env.SECRET is the correct secret key
     req.user = await User.findOne({ _id }).select('_id email'); // Include additional fields you want to populate
     next();
   } catch (error) {
