@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import BloodRequestDetails from "../components/BloodRequestDetails";
 import BloodRequestForm from "../components/BloodRequestForm";
-import ProfileComponent from "../components/ProfileComponent";
+import axios from "axios";
+
+//icons
 import DonateIcon from "../assets/icons/bx_donate-blood.svg";
 import RequestIcon from "../assets/icons/material-symbols_search.svg";
 import HistoryIcon from "../assets/icons/tabler_book.svg";
-import axios from "axios";
+import CalendarIcon from "../assets/icons/calendar.svg";
+import CheckMarkIcon from "../assets/icons/checkmark.svg";
+import BloodDropIcon from "../assets/icons/blooddrop.svg";
 
 const Home = () => {
   const { bloodRequests, dispatch } = useBloodRequestsContext();
@@ -16,6 +20,7 @@ const Home = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [isButtonBlurred, setIsButtonBlurred] = useState(false);
   const [firstName, setFirstName] = useState("");
+  const componentRef = useRef(null);
 
   useEffect(() => {
     const fetchBloodRequests = async () => {
@@ -50,13 +55,22 @@ const Home = () => {
     }
   }, [dispatch, user]);
 
+  useEffect(() => {
+    if (showForm || showDetails) {
+      // Scroll to the component when it is shown
+      componentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showForm, showDetails]);
+
   const toggleFormVisibility = () => {
-    setShowForm(!showForm);
+    setShowDetails(!showDetails);
+    setShowForm(false); // Hide the BloodRequestForm
     setIsButtonBlurred(!isButtonBlurred);
   };
 
   const toggleDetailsVisibility = () => {
-    setShowDetails(!showDetails);
+    setShowForm(!showForm);
+    setShowDetails(false); // Hide the BloodRequestDetails
     setIsButtonBlurred(!isButtonBlurred);
   };
 
@@ -68,25 +82,42 @@ const Home = () => {
     <div className="home">
       <div className="containerAllProfile">
         <div className="stats">
-          <h3>HI {firstName}</h3>
+          <div className="Name">
+            <h3>Hi,</h3>
+            <h3>{firstName}</h3>
+          </div>
+          <div className="statsData">
+            <div className="bloodBag">
+              <img src={BloodDropIcon} alt="Donate icon" />
+              <h2>Blood Bags</h2>
+            </div>
+            <div className="avail">
+              <img src={CheckMarkIcon} alt="Donate icon" />
+              <h2>AVAILABLE</h2>
+            </div>
+            <div className="calendarNext">
+              <img src={CalendarIcon} alt="Donate icon" />
+              <h2>DAYS</h2>
+            </div>
+          </div>
         </div>
         <div className={`buttonContainer ${isButtonBlurred ? "blurred" : ""}`}>
           <button
-            className={`requestButton ${showForm ? "active" : ""}`}
-            onClick={toggleFormVisibility}
+            className={`requestButton ${showDetails ? "active" : ""}`}
+            onClick={toggleDetailsVisibility}
           >
             <div>
-              <img src={DonateIcon} alt="Donate icons" />
-              <span>Donate</span>
+              <img src={RequestIcon} alt="Request icon" />
+              <span>Request</span>
             </div>
           </button>
           <button
-            className={`detailsButton ${showDetails ? "active" : ""}`}
-            onClick={toggleDetailsVisibility}
+            className={`detailsButton ${showForm ? "active" : ""}`}
+            onClick={toggleFormVisibility}
           >
-             <div>
-              <img src={RequestIcon} alt="Request icon" />
-              <span>Request</span>
+            <div>
+              <img src={DonateIcon} alt="Donate icon" />
+              <span>Donate</span>
             </div>
           </button>
           <button className="historyButton">
@@ -99,7 +130,7 @@ const Home = () => {
       </div>
       <div className="containerHome">
         {showForm && <BloodRequestForm onClose={handleFormClose} />}
-        <div className="bloodRequests">
+        <div className="bloodRequests" ref={componentRef}>
           {showDetails &&
             bloodRequests &&
             bloodRequests.map((bloodRequest) => (
@@ -115,4 +146,3 @@ const Home = () => {
 };
 
 export default Home;
-

@@ -21,7 +21,9 @@ const BloodRequestForm = ({ onClose }) => {
       return;
     }
 
-    const bloodRequest = { patientName, bloodType, location, phoneNumber };
+    const formattedPhoneNumber = phoneNumber.startsWith("+63") ? phoneNumber.slice(3) : phoneNumber;
+
+    const bloodRequest = { patientName, bloodType, location, phoneNumber: formattedPhoneNumber };
 
     const response = await fetch("/api/bloodRequests", {
       method: "POST",
@@ -92,24 +94,24 @@ const BloodRequestForm = ({ onClose }) => {
       />
 
       <label>Phone Number:</label>
-      <input
-        type="text"
-        maxLength={10}
-        onChange={(e) => {
-          const input = e.target.value;
-          const phoneNumber = input.slice(0, 10);
-          setPhoneNumber(phoneNumber);
-        }}
-        value={phoneNumber}
-      />
+      <div className="phone-number-input">
+        <input
+          type="text"
+          maxLength={11}
+          placeholder="+63"
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={phoneNumber}
+          className={emptyFields.includes("phoneNumber") ? "error" : ""}
+        />
+      </div>
 
-      <button>Add Blood Request</button>
-      {error && <div className="error">{error}</div>}
-
-      <button onClick={handleClose}>Close Form</button>
+      <div className="AddBloodRequestButtons">
+        <button>Add Blood Request</button>
+        {error && <div className="error">{error}</div>}
+        <button onClick={handleClose}>Close Form</button>
+      </div>
     </form>
   );
 };
 
 export default BloodRequestForm;
-//hi
