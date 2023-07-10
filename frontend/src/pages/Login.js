@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom'
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -45,7 +47,6 @@ const Login = () => {
       </div>
       <h3 className="LUG">LOG IN TO YOUR ACCOUNT</h3>
       <div className="form-wrapper">
-        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -53,8 +54,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-
-        <label htmlFor="password">Password</label>
+      
         <div className="password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
@@ -67,7 +67,7 @@ const Login = () => {
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </label>
 
-          <a href="#" className="forgot-password">Forgot Password?</a>
+          <Link to="/login" className="forgot-password">Forgot Password?</Link>
         </div>
 
         <button disabled={isLoading}>Sign in</button>
@@ -80,7 +80,7 @@ const Login = () => {
           <img src="./images/ms.png" alt="MS" className="img3" />
         </div>
       </div>
-      <p className="Signwith"> Don't have an account? <a href="/signup" className="noAcc"> Sign up</a></p>
+      <p className="Signwith"> Don't have an account?<Link to="/signup" className="noAcc">Sign up</Link></p>
     </form>
   );
 };

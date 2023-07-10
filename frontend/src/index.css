@@ -128,8 +128,9 @@ nav a {
 }
 nav button {
   background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: #F00;;
+  border: 2px solid;
+  border-color: #B70000;
   padding: 6px 10px;
   border-radius: 4px;
   font-family: "Poppins";
@@ -442,17 +443,7 @@ nav {
 nav a {
   margin-left: 10px;
 }
-nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-family: "Poppins";
-  cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
-}
+
 
 .navi li{
   display:inline;
