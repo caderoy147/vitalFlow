@@ -45,7 +45,7 @@ const Login = () => {
       </div>
       <h3 className="LUG">LOG IN TO YOUR ACCOUNT</h3>
       <div className="form-wrapper">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email"></label>
         <input
           type="email"
           id="email"
@@ -54,7 +54,7 @@ const Login = () => {
           value={email}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password"></label>
         <div className="password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
