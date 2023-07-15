@@ -4,6 +4,11 @@ import { createUseStyles } from 'react-jss'
 import Chevron from "../assets/icons/chevrondown2710-nl0n.svg";
 import vector278 from "../assets/icons/vector278-8xd8.svg";
 import homecircle from "../assets/icons/ellipse89310-c7k.svg";
+
+
+
+
+
 const AboutUs = (props) => {
   const classes = useStyles()
   return (
@@ -348,7 +353,6 @@ const AboutUs = (props) => {
             <img
               alt="Ellipse519372"
               src="./images/ellipse519372-gu1e-200h.png"
-              className={classes['Ellipse51']}
               className={classes['Ellipse51']}
             />
           </div>
