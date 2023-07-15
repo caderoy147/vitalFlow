@@ -380,7 +380,16 @@ input.error {
   height: auto;
   /* Add any additional styling properties */
 }
+.HomeLogo {
+  top: 100px;
+  margin-right: 0px;
+}
 
+.HomeLogo1{
+  bottom: 60px;
+  width: auto; /* Adjust the width of the image */
+  height: 50px; 
+}
 .password-wrapper {
   position: relative;
 }
@@ -664,10 +673,22 @@ h3{
   top: 20px;
   left: 275px;
 }
-
+.spanHome:hover{
+  color: #f00;
+}
+.spanFind:hover{
+  color: #f00;
+}
+.spanProfile:hover{
+  color: #f00;
+}
+.spanAboutUs:hover{
+  color: #f00;
+}
 .Vital {
   margin-bottom: -0.6em;
   padding: 0;;
+  margin-left: 100px;
   color: #F00;;
 }
 .Flow {

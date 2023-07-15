@@ -1,85 +1,450 @@
-import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
 import React from 'react'
+
 import { createUseStyles } from 'react-jss'
-
-const Navbar = (props) => {
+import Chevron from "../assets/icons/chevrondown2710-nl0n.svg";
+import vector278 from "../assets/icons/vector278-8xd8.svg";
+import homecircle from "../assets/icons/ellipse89310-c7k.svg";
+const AboutUs = (props) => {
   const classes = useStyles()
-
-  const { logout } = useLogout()
-  const { user } = useAuthContext()
-
-  const handleClick = () => {
-    logout()
-  }
-
   return (
-   <header>
-    <div className="container">
-      
-      <Link to='/'>
-      <div className="HomeLogo">
-      </div>
-      <h1><span className='Vital'> Vital</span>
-      <span className='Flow'>Flow</span></h1>
-      </Link>
-      
-      <ul className = "navi">
-        
-      <div className={classes['Navbar']}>
-        
-          <div className={classes['AboutUs']}>
-            
-            <span className={classes['text71']}>
-            <Link to="/AboutUs">
-            <span className="spanAboutUs">About Us</span>
-            </Link>
-            </span>
+    <div className={classes['container']}>
+      <div className={classes['Home']}>
+        <div className={classes['Footer']}>
+          <div className={classes['Row1']}>
+            <div className={classes['CTA']}>
+              <span className={classes['text']}>
+                <span>Ready to get started?</span>
+              </span>
+              <div className={classes['Button']}>
+                <img
+                  alt="Rectangle9214"
+                  src="./images/rec1.png"
+                  className={classes['Rectangle']}
+                />
+                <span className={classes['text02']}>
+                  <span>Donate</span>
+                </span>
+              </div>
+            </div>
+            <img
+              alt="Divider9214"
+              src="./images/divider9214-tlfe-200h.png"
+              className={classes['Divider']}
+            />
           </div>
-          <div className={classes['Home1']}>
-              <span className={classes['text73']} >
-                <Link to="/">
-                  <span className="spanHome">Home</span>
-                </Link>
+          <div className={classes['Row2']}>
+            <div className={classes['Newsletter']}>
+              <span className={classes['text04']}>
+                <span>
+                  <span>Subscribe to our</span>
+                  <br></br>
+                  <span>newsletter</span>
+                </span>
+              </span>
+              <div className={classes['Form']}>
+                <img
+                  alt="Rectangle9215"
+                  src="./images/rectangle9215-uj9p-200h.png"
+                  className={classes['Rectangle1']}
+                />
+                <span className={classes['text09']}>
+                  <span>Email address</span>
+                </span>
+                <div className={classes['Submit']}>
+                  <div className={classes['ickeyboardarrowright48px']}>
+                    <img
+                      alt="Path9215"
+                      src="./images/path9215-9qsd.svg"
+                      className={classes['Path']}
+                    />
+                    <img alt="Path9215" src className={classes['Path1']} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classes['Services']}>
+              <span className={classes['text11']}>
+                <span>Services</span>
+              </span>
+              <span className={classes['text13']}>
+                <span>Email Marketing</span>
+              </span>
+              <span className={classes['text15']}>
+                <span>Campaigns</span>
+              </span>
+              <span className={classes['text17']}>
+                <span>Branding</span>
+              </span>
+              <span className={classes['text19']}>
+                <span>Offline</span>
               </span>
             </div>
-          <div className={classes['FindBlood']}>
-            <span className={classes['text75']}>
-            <Link to="/profile">
-              <span className="spanFind">Find Blood</span>
-            </Link>
+            <div className={classes['About']}>
+              <span className={classes['text21']}>
+                <span>About</span>
+              </span>
+              <span className={classes['text23']}>
+                <span>Our Story</span>
+              </span>
+              <span className={classes['text25']}>
+                <span>Benefits</span>
+              </span>
+              <span className={classes['text27']}>
+                <span>Team</span>
+              </span>
+              <span className={classes['text29']}>
+                <span>Careers</span>
+              </span>
+            </div>
+            <div className={classes['Help']}>
+              <span className={classes['text31']}>
+                <span>Help</span>
+              </span>
+              <span className={classes['text33']}>
+                <span>FAQs</span>
+              </span>
+              <span className={classes['text35']}>
+                <span>Contact Us</span>
+              </span>
+            </div>
+          </div>
+          <div className={classes['Row3']}>
+            <span className={classes['text37']}>
+              <span>Terms &amp; Conditions</span>
+            </span>
+            <span className={classes['text39']}>
+              <span>Privacy Policy</span>
+            </span>
+            <div className={classes['Social']}>
+              <div className={classes['Frame001facebook']}>
+                <img
+                  alt="Path9215"
+                  src="/path9215-wjbsjb.svg"
+                  className={classes['Path2']}
+                />
+              </div>
+              <div className={classes['Frame003twitter']}>
+                <img
+                  alt="Path9215"
+                  src="/path9215-syl9.svg"
+                  className={classes['Path3']}
+                />
+              </div>
+              <div className={classes['Frame004instagram']}>
+                <img
+                  alt="Shape9215"
+                  src="/shape9215-tj3.svg"
+                  className={classes['Shape']}
+                />
+                <img
+                  alt="Shape9215"
+                  src="/shape9215-trd.svg"
+                  className={classes['Shape1']}
+                />
+                <img
+                  alt="Oval9215"
+                  src="./images/oval9215-a1xh-200h.png"
+                  className={classes['Oval']}
+                />
+              </div>
+            </div>
+          </div>
+          <img
+            alt="Vector9215"
+            src="/vector9215-vvpe.svg"
+            className={classes['Vector']}
+          />
+        </div>
+        <div className={classes['HowToGetBlood']}>
+          <div className={classes['title']}>
+            <span className={classes['text41']}>
+              <span>How to get Blood?</span>
             </span>
           </div>
-          <div className={classes['Profile']}>
-            <span className={classes['text75']}>
-            <Link to="/profile">
-              <span className="spanProfile">Profile</span>
-            </Link>
+          <div className={classes['Group142']}>
+            <img
+              alt="pngwing19367"
+              src="./images/pngwing19367-p0j4o-500h.png"
+              className={classes['pngwing1']}
+            />
+            <div className={classes['Frame1']}>
+              <div className={classes['Group131']}>
+                <img
+                  alt="Ellipse69369"
+                  src="./images/ellipse69369-iv6r-200h.png"
+                  className={classes['Ellipse6']}
+                />
+                <img
+                  alt="Ellipse79371"
+                  src="./images/ellipse79371-7dzj-200h.png"
+                  className={classes['Ellipse7']}
+                />
+              </div>
+              <div className={classes['Group132']}>
+                <img
+                  alt="Ellipse59368"
+                  src="./images/ellipse59368-xy4-400h.png"
+                  className={classes['Ellipse5']}
+                />
+                <div className={classes['RegistrationProcessbox']}>
+                  <span className={classes['text43']}>
+                    <span>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </span>
+                  </span>
+                </div>
+                <div className={classes['bipencilsquare']}>
+                  <div className={classes['Group']}>
+                    <img
+                      alt="Vector8621"
+                      src="/vector8621-j5w.svg"
+                      className={classes['Vector1']}
+                    />
+                    <img
+                      alt="Vector8622"
+                      src="/vector8622-67ib.svg"
+                      className={classes['Vector2']}
+                    />
+                  </div>
+                </div>
+              </div>
+              <span className={classes['text45']}>1</span>
+            </div>
+            <div className={classes['Frame2']}>
+              <div className={classes['Group1311']}>
+                <img
+                  alt="Ellipse69391"
+                  src="./images/ellipse69391-i4lb-200h.png"
+                  className={classes['Ellipse61']}
+                />
+                <img
+                  alt="Ellipse79392"
+                  src="./images/ellipse79392-4vw5-200h.png"
+                  className={classes['Ellipse71']}
+                />
+              </div>
+              <div className={classes['Group1321']}>
+                <img alt="Ellipse59394" src="./images/ellipse59394-4n1l-400w.png" />
+                <div className={classes['RegistrationProcessbox1']}>
+                  <span className={classes['text46']}>
+                    <span>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </span>
+                  </span>
+                </div>
+                <div className={classes['bipencilsquare1']}>
+                  <div className={classes['bipencilsquare2']}>
+                    <div className={classes['Group1']}>
+                      <img
+                        alt="Vector9371"
+                        src="/vector9371-ntaa.svg"
+                        className={classes['Vector3']}
+                      />
+                      <img
+                        alt="Vector9372"
+                        src="/vector9372-tfn.svg"
+                        className={classes['Vector4']}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span className={classes['text48']}>2</span>
+            </div>
+            <div className={classes['Frame3']}>
+              <div className={classes['Group1312']}>
+                <img
+                  alt="Ellipse69378"
+                  src="./images/ellipse69378-6ns-200h.png"
+                  className={classes['Ellipse62']}
+                />
+                <img
+                  alt="Ellipse79379"
+                  src="./images/ellipse79379-v2c-200h.png"
+                  className={classes['Ellipse72']}
+                />
+              </div>
+              <div className={classes['Group1322']}>
+                <img
+                  alt="Ellipse59381"
+                  src="./images/ellipse59381-ig5t-400w.png"
+                  className={classes['Ellipse52']}
+                />
+                <div className={classes['RegistrationProcessbox2']}>
+                  <span className={classes['text49']}>
+                    <span>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </span>
+                  </span>
+                </div>
+                <div className={classes['bipencilsquare3']}>
+                  <div className={classes['Group2']}>
+                    <img
+                      alt="Vector9386"
+                      src="/vector9386-owgi.svg"
+                      className={classes['Vector5']}
+                    />
+                    <img
+                      alt="Vector9387"
+                      src="/vector9387-bf1.svg"
+                      className={classes['Vector6']}
+                    />
+                  </div>
+                </div>
+              </div>
+              <span className={classes['text51']}>3</span>
+            </div>
+          </div>
+        </div>
+        <div className={classes['OurCollaberators']}>
+          <div className={classes['Group146']}>
+            <div className={classes['DonorsfromTKM']}>
+              <span className={classes['text52']}>
+                <span>Our Collaborators</span>
+              </span>
+            </div>
+            <div className={classes['Group144']}>
+              <img
+                alt="Rectangle208333"
+                src="./images/rectangle208333-be9i-400h.png"
+                className={classes['Rectangle20']}
+              />
+              <span className={classes['text54']}>
+                <span>NSS</span>
+              </span>
+            </div>
+            <div className={classes['Group143']}>
+              <span className={classes['text56']}>
+                <span>
+                  NCC
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: ' ',
+                    }}
+                  />
+                </span>
+              </span>
+            </div>
+            <div className={classes['Group145']}>
+              <span className={classes['text58']}>
+                <span>YMCA</span>
+              </span>
+            </div>
+          </div>
+          <div className={classes['Group149']}>
+            <img
+              alt="Ellipse499372"
+              src="./images/ellipse499372-53v-200h.png"
+              className={classes['Ellipse49']}
+            />
+            <img
+              alt="Ellipse509372"
+              src="./images/ellipse509372-iaq-200h.png"
+              className={classes['Ellipse50']}
+            />
+            <img
+              alt="Ellipse519372"
+              src="./images/ellipse519372-gu1e-200h.png"
+              className={classes['Ellipse51']}
+              className={classes['Ellipse51']}
+            />
+          </div>
+        </div>
+        <div className={classes['OurMission']}>
+          <div className={classes['OurMission1']}>
+            <span className={classes['text60']}>
+              <span>Our Mission</span>
+            </span>
+            <span className={classes['text62']}>
+              <span>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry&apos;s standard
+                dummy text ever since the 1500s, when an unknown printer took a
+                galley of type and scrambled it to make a type specimen book. It
+                has survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: ' ',
+                  }}
+                />
+              </span>
             </span>
           </div>
         </div>
-        </ul>
-      <nav>
-         {user && (
-            <div>
-              <span>{user.email}</span>
-              <button onClick={handleClick}>Log out</button>
-            </div>
-          )}
-          {!user && (
-            <div>
-              <Link to="/login" className='logIn'>Login</Link>
-              <Link to="/signup"className='signUp'>Signup</Link>
-            </div>
-          )}
-      </nav>
+        <div className={classes['HeroSection']}>
+          <div className={classes['HeroTextQuotes']}>
+            <span className={classes['text64']}>
+              <span>
+                <span>Save Life Donate</span>
+                <br></br>
+                <span>
+                  Blood
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: ' ',
+                    }}
+                  />
+                </span>
+              </span>
+            </span>
+            <span className={classes['text69']}>
+              <span>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry&apos;s standard
+                dummy text ever since the 1500s, when an unknown printer took a
+                galley of type and scrambled it to make a type specimen book. It
+                has survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+              </span>
+            </span>
+          </div>
+          <div className={classes['HeroGradientDesign']}>
+            <img
+              alt="Ellipse109310"
+              src="/ellipse109310-6xky.svg"
+              className={classes['Ellipse10']}
+            />
+            <img src={homecircle} alt="homecircle" className={classes['Ellipse8']} />
+          </div>
+        </div>
+        <div className={classes['Navbar']}>
+          <div className={classes['AboutUs']}>
+           
+              
+            
+          </div>
+          <div className={classes['Home1']}>
+            
+             
+           
+          </div>
+          <div className={classes['FindBlood']}>
+            
+              
+            
+          </div>
+          <div className={classes['LoginButton']}>
+            
+          </div>
+          <div className={classes['RegisterNow']}>
+            <span className={classes['text79']}>
+              
+            </span>
+            
+          </div>
+         
+          
+        </div>
+      </div>
     </div>
-   </header>
   )
 }
 
-export default Navbar 
+export default AboutUs
 
 const useStyles = createUseStyles({
   container: {
@@ -1359,8 +1724,8 @@ const useStyles = createUseStyles({
     flexShrink: 1,
   },
   AboutUs: {
-    top: '-5px',
-    left: '719px',
+    top: '17px',
+    left: '494px',
     width: '107px',
     height: '36px',
     display: 'flex',
@@ -1382,8 +1747,8 @@ const useStyles = createUseStyles({
     textDecoration: 'none',
   },
   Home1: {
-    top: '-5px',
-    left: '573px',
+    top: '17px',
+    left: '348px',
     width: '72px',
     height: '36px',
     display: 'flex',
@@ -1403,22 +1768,10 @@ const useStyles = createUseStyles({
     lineHeight: 'normal',
     fontStretch: 'normal',
     textDecoration: 'none',
-    
   },
   FindBlood: {
-    top: '-5px',
-    left: '900px',
-    width: '124px',
-    height: '36px',
-    display: 'flex',
-    position: 'absolute',
-    alignItems: 'flex-start',
-    flexShrink: 1,
-  },
-
-  Profile:{
-    top: '-5px',
-    left: '1100px',
+    top: '17px',
+    left: '675px',
     width: '124px',
     height: '36px',
     display: 'flex',
@@ -1532,5 +1885,3 @@ const useStyles = createUseStyles({
     backgroundColor: 'rgba(75, 72, 72, 1)',
   },
 })
-
-//hi

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage'; // Add this import statement for the ProfilePage component
 
 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
           <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
+          <Route path ="/AboutUs" element={user ? <AboutUs/> : <Navigate to="/AboutUs"/>}/> 
         </Routes>
         
       </div> 
