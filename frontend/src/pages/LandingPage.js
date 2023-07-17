@@ -194,30 +194,26 @@ const LandingPage = (props) => {
             <div className="index-navbar">
               <div className="index-about-usbutton23">
                 <span className="index-text45">
-                  <span>About Us</span>
+                  
                 </span>
               </div>
               <div className="index-homebutton23">
                 <span className="index-text47">
-                  <span>Home</span>
+                 
                 </span>
               </div>
               <div className="index-find-blood">
                 <span className="index-text49">
-                  <span>Find Donor</span>
+                  
                 </span>
               </div>
               <div className="index-register-nowbutton23">
                 <span className="index-text51">
-                  <span>Register Now</span>
+                  
                 </span>
-                <img
-                  src="./images/chevrondown1713-yylb.svg"
-                  alt="chevrondown1713"
-                  className="index-chevrondown"
-                />
+                
               </div>
-              <div className="index-tab-bar-selected"></div>
+          
             </div>
             <div className="index-group161">
               <div className="index-group159">
@@ -287,13 +283,9 @@ const LandingPage = (props) => {
               alt="Rectangle158button232008"
               className="index-rectangle158button23"
             />
-            <img
-              src="./images/rectangle95button232008-eyb-200h.png"
-              alt="Rectangle95button232008"
-              className="index-rectangle95button23"
-            />
+            
             <span className="index-text67">
-              <span>Login</span>
+
             </span>
             <img
               src="./images/rectangle1592008-mjfk-200h.png"

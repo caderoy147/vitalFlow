@@ -39,7 +39,7 @@ const Navbar = (props) => {
           </div>
           <div className={classes['Home1']}>
               <span className={classes['text73']} >
-                <Link to="/">
+                <Link to="/Home">
                   <span className="spanHome">Home</span>
                 </Link>
               </span>

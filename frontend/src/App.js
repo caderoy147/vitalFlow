@@ -41,8 +41,8 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
+            <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
             <Route path="/" element={!user || user? <LandingPage /> : <Navigate to="/LandingPage" />} />
-            <Route path="/home" element={user ? <Home /> : <Navigate to="/LandingPage" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/home" />} />
             <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
