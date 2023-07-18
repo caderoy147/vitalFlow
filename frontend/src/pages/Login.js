@@ -13,6 +13,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
+    // Redirect to Home.js after login
+    window.location.href = "/Home.js";
   };
 
   function handleCallbackResponse(response) {
@@ -22,6 +24,7 @@ const Login = () => {
   }
 
   useEffect(() => {
+    
     /* global google */
     google.accounts.id.initialize({
       client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",

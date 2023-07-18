@@ -10,7 +10,7 @@ import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage';
 import LandingPage from './pages/LandingPage';
-
+import './styles.scss';
 function App() {
   const [user2, setUser] = useState({});
   function handleCallbackResponse(response) {

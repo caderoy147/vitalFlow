@@ -6,14 +6,7 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
-body {
-  background: #f1f1f1;
-  margin: 0;
-  font-family: "Poppins";
-}
-header {
-  background: #fff;
-}
+
 
 header .container {
   max-width: 1400px;
@@ -182,7 +175,9 @@ body {
   font-family: "Poppins";
 }
 header {
-  background: #fff;
+  background: #ffffff;
+  width: auto;
+  height: auto;
 }
 
 header .container {
@@ -367,7 +362,7 @@ input.error {
 
 .LUG {
   display: inline-block;
-  margin-left: 75px; /* Adjust the margin as needed to create space between the form and the heading */
+  margin-left: 10px; /* Adjust the margin as needed to create space between the form and the heading */
   /* Add any desired styling for the heading */
 }
 
@@ -384,14 +379,13 @@ input.error {
   /* Add any additional styling properties */
 }
 .HomeLogo {
-  top: 100px;
-  margin-right: 0px;
+  width: auto;
+  height: auto;
 }
 
 .HomeLogo1{
-  bottom: 60px;
-  width: auto; /* Adjust the width of the image */
-  height: 50px; 
+  width: auto;
+  height: auto;
 }
 .password-wrapper {
   position: relative;
@@ -684,10 +678,10 @@ h3{
 .password-wrapper label.show {
   position: absolute;
   top: 20px;
-  left: 275px;
+  left: 152px;
 }
 .spanHome:hover{
-  color: #f00;
+  color: rgb(255, 255, 255);
 }
 .spanFind:hover{
   color: #f00;
@@ -696,12 +690,14 @@ h3{
   color: #f00;
 }
 .spanAboutUs:hover{
-  color: #f00;
+  color: rgb(245, 241, 241);
 }
 .Vital {
   margin-bottom: -0.6em;
   padding: 0;;
   margin-left: 100px;
+  width: auto;
+  height: auto;
   color: #F00;;
 }
 .Flow {

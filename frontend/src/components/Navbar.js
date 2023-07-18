@@ -4,6 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
+
 const Navbar = (props) => {
   const classes = useStyles()
 
@@ -24,53 +25,28 @@ const Navbar = (props) => {
       <h1><span className='Vital'> Vital</span>
       <span className='Flow'>Flow</span></h1>
       </Link>
-      
-      <ul className = "navi">
-        
-      <div className={classes['Navbar']}>
-        
-          <div className={classes['AboutUs']}>
-            
-            <span className={classes['text71']}>
-            <Link to="/AboutUs">
-            <span className="spanAboutUs">About Us</span>
-            </Link>
-            </span>
-          </div>
-          <div className={classes['Home1']}>
-              <span className={classes['text73']} >
-                <Link to="/Home">
-                  <span className="spanHome">Home</span>
-                </Link>
-              </span>
+      <nav>
+      <ul id="main">
+        <li><Link to="/Home"><span className="spanHome">Home</span></Link></li>
+        <li><Link to="/AboutUs"><span className="spanAboutUs">About</span></Link></li>
+        <li><Link to ="#" className="spanHome">Find Blood</Link>
+          <ul class="drop">
+            <div>
+            <li><Link to="/login" className="spanHome" >Login</Link></li>
+            <li> <Link to="/signup" className="spanHome">Signup</Link></li>
+
             </div>
-          <div className={classes['FindBlood']}>
-            <span className={classes['text75']}>
-            <Link to="/profile">
-              <span className="spanFind">Find Blood</span>
-            </Link>
-            </span>
-          </div>
-          <div className={classes['Profile']}>
-            <span className={classes['text75']}>
-            <Link to="/profile">
-              <span className="spanProfile">Profile</span>
-            </Link>
-            </span>
-          </div>
-        </div>
-        </ul>
+          </ul>
+        </li>
+        <li><Link to="/" className="spanHome">Contact</Link></li>
+        <div id="marker"></div>
+      </ul>
+      </nav>
       <nav>
          {user && (
             <div>
               <span>{user.email}</span>
               <button onClick={handleClick}>Log out</button>
-            </div>
-          )}
-          {!user && (
-            <div>
-              <Link to="/login" className='logIn'>Login</Link>
-              <Link to="/signup"className='signUp'>Signup</Link>
             </div>
           )}
       </nav>
