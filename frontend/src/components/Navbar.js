@@ -28,7 +28,7 @@ const Navbar = (props) => {
   })
 
   const activeNavLink = user ? 'Profile' : 'Find Blood'
-  const linkPath = user ? '/Profile' : '/FindBlood'
+  const linkPath = user ? '/Profile' : '/Login'
 
   const drop = user ? null : <ul class="drop">
             <div>
