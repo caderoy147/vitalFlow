@@ -9,7 +9,7 @@ const LandingPage = (props) => {
             <img
               src="./images/blooddonation12008-cucn-1500w.png"
               alt="BloodDonation12008"
-              className="index-blood-donation1"
+              className="index-blood-donation2"
             />
             <div className="index-footer">
               <div className="index-row1">
@@ -211,7 +211,7 @@ const LandingPage = (props) => {
                 <span className="index-text51">
                   
                 </span>
-                
+              
               </div>
           
             </div>
@@ -304,8 +304,9 @@ const LandingPage = (props) => {
             <span className="index-text75">
               <span>SAVE LIVES BY DONATING BLOOD</span>
             </span>
+                          
             <span className="index-text77">
-              <span>What is Vital Flow?</span>
+              <span className="What">What is Vital Flow?</span>
             </span>
             <div className="index-group163">
               <div className="index-our-collaberators">

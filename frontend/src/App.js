@@ -11,6 +11,8 @@ import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage';
 import LandingPage from './pages/LandingPage';
 import './styles.scss';
+import './landingPage.css';
+import './aboutUs.css';
 function App() {
   const [user2, setUser] = useState({});
   function handleCallbackResponse(response) {
