@@ -21,7 +21,7 @@
   .aboutus-footer {
     top: 2300.100830078125px;
     left: 0px;
-    width: 1440px;
+    width: 100%;
     height: 816.899169921875px;
     display: flex;
     position: absolute;
@@ -31,7 +31,7 @@
   .aboutus-rectangle {
     top: 261.899169921875px;
     left: 0px;
-    width: auto;
+    width: 100%;
     height: 555px;
     position: absolute;
   }
@@ -571,7 +571,7 @@
   }
   .aboutus-our-mission1 {
     top: 33px;
-    left: 53px;
+    left: 219px;
     width: 1236px;
     height: 317px;
     display: flex;
@@ -596,7 +596,7 @@
     top: 93px;
     left: 6px;
     color: rgba(0, 0, 0, 1);
-    width: 1500px;
+    width: 1225px;
     height: auto;
     position: absolute;
     font-size: 24px;
@@ -610,7 +610,7 @@
   }
   .aboutus-our-mission2 {
     top: 1418px;
-    left: 44px;
+    left: 219px;
     width: 1345px;
     height: 411px;
     display: flex;
@@ -653,7 +653,7 @@
     top: 105px;
     left: 4px;
     color: rgba(0, 0, 0, 1);
-    width: 1500px;
+    width: 1225px;
     height: auto;
     position: absolute;
     font-size: 24px;
@@ -742,14 +742,13 @@
   }
   .aboutus-blue-modern-education-logo21 {
     top: 123px;
-    left: -94px;
     width: 844px;
     height: 769px;
     position: absolute;
   }
   .aboutus-group164 {
     top: 1987px;
-    left: 97px;
+    left: 275px;
     width: 1228px;
     height: 513px;
     display: flex;

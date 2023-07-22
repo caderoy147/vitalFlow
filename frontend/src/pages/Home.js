@@ -83,8 +83,7 @@ const Home = () => {
       <div className="containerAllProfile">
         <div className="stats">
           <div className="Name">
-            <h3>Hi,</h3>
-            <h3>{firstName}</h3>
+            <h3>Hey There! {firstName}</h3>
           </div>
           <div className="statsData">
             <div className="bloodBag">
