@@ -175,6 +175,7 @@ const AboutUs = (props) => {
               <span>Our Mission</span>
             </span>
             <span className="aboutus-text43">
+            <img src="./images/rectangle1602029-jfu.svg" alt="Rectangle1602029" class="aboutus-rectangle162"></img>
               <span>
                 Our mission is driven by a deep understanding of the urgent need
                 for blood donations worldwide. Every day, countless lives are at
@@ -205,6 +206,7 @@ const AboutUs = (props) => {
             </span>
             <span className="aboutus-text47">
               <span>
+              <img src="./images/rectangle1602029-jfu.svg" alt="Rectangle1602029" class="aboutus-rectangle163"></img>
                 Our mission is driven by a deep understanding of the urgent need
                 for blood donations worldwide. Every day, countless lives are at
                 risk due to the lack of available blood for transfusions.
@@ -251,7 +253,9 @@ const AboutUs = (props) => {
               className="aboutus-ellipse8"
             />
           </div>
+          
           <span className="aboutus-text54 Content">
+            
             {' '}
             We are a passionate group of students who have come together with a
             common goal: to address the inadequacy in blood donation through the
