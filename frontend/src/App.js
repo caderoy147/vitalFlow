@@ -7,17 +7,19 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
-import ProfilePage from './pages/ProfilePage'; // Add this import statement for the ProfilePage component
-
-
+import AboutUs from './pages/AboutUs';
+import ProfilePage from './pages/ProfilePage';
+import LandingPage from './pages/LandingPage';
+import './styles.scss';
 function App() {
-  const [ user2 , setUser ] = useState({});
+  const [user2, setUser] = useState({});
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
     setUser(userObject);
   }
+
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -27,35 +29,27 @@ function App() {
 
     google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
-      {theme: "outline", size: "large"}
-    )
-
-
+      { theme: "outline", size: "large" }
+    );
   }, []);
-  const { user } = useAuthContext();
-// NO USER SHOW SIGN IN, IF HAVE USER LOG OUT
 
+  const { user } = useAuthContext();
 
   return (
     <div className="App">
-      
-
-      
       <BrowserRouter>
-      <Navbar />
-      <img src = {user2.picture}></img>
-      <div className="pages">
-        <Routes>
-          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
-          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-          <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
-          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
-        </Routes>
-        
-      </div> 
-    </BrowserRouter>
-      
-      
+        <Navbar />
+        <div className="pages">
+          <Routes>
+            <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
+            <Route path="/" element={!user || user? <LandingPage /> : <Navigate to="/LandingPage" />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
+            <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/home" />} />
+            <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
+            <Route path="/aboutus" element={!user || user ? <AboutUs /> : <Navigate to="/aboutus" />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

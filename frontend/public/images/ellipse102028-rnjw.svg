@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg width='90' height='727' viewBox='0 0 90 727' fill='none' xmlns='http://www.w3.org/2000/svg'>
+<g filter='url(#filter0_d_2028_423)'>
+<path d='M-269.05 269.58C-125.526 201.038 1.20569 156.986 -11.5 217C-113.689 261.114 -197.901 273.969 -269.05 269.58C-390.982 327.81 -525.033 403.715 -596 448.5C-726.615 448.5 -1308 717.115 -1308 586.5C-1308 455.885 -754 -38.5002 -643.5 132C-549.353 132 -452.728 258.249 -269.05 269.58Z' fill='url(#paint0_linear_2028_423)'/>
+</g>
+<defs>
+<filter id='filter0_d_2028_423' x='-1408' y='0.633301' width='1497.38' height='725.687' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'>
+<feFlood flood-opacity='0' result='BackgroundImageFix'/>
+<feColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/>
+<feOffset dy='4'/>
+<feGaussianBlur stdDeviation='50'/>
+<feColorMatrix type='matrix' values='0 0 0 0 0.925 0 0 0 0 0.914208 0 0 0 0 0.914208 0 0 0 1 0'/>
+<feBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_2028_423'/>
+<feBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_2028_423' result='shape'/>
+</filter>
+<linearGradient id='paint0_linear_2028_423' x1='-1021.86' y1='138.148' x2='-842.678' y2='670.941' gradientUnits='userSpaceOnUse'>
+<stop offset='0.286458' stop-color='#FE0707'/>
+<stop offset='0.66922' stop-color='white'/>
+</linearGradient>
+</defs>
+</svg>

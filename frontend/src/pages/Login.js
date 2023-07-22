@@ -13,6 +13,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
+    // Redirect to Home.js after login
+    window.location.href = "/Home.js";
   };
 
   function handleCallbackResponse(response) {
@@ -22,6 +24,7 @@ const Login = () => {
   }
 
   useEffect(() => {
+    
     /* global google */
     google.accounts.id.initialize({
       client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
@@ -45,7 +48,7 @@ const Login = () => {
       </div>
       <h3 className="LUG">LOG IN TO YOUR ACCOUNT</h3>
       <div className="form-wrapper">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email"></label>
         <input
           type="email"
           id="email"
@@ -54,7 +57,7 @@ const Login = () => {
           value={email}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password"></label>
         <div className="password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
