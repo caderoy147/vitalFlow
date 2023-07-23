@@ -349,7 +349,6 @@ const AboutUs = (props) => {
               alt="Ellipse519372"
               src="./images/ellipse519372-gu1e-200h.png"
               className={classes['Ellipse51']}
-              className={classes['Ellipse51']}
             />
           </div>
         </div>

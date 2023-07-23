@@ -1,20 +1,28 @@
-import { useLogin } from "../hooks/useLogin";
 import React, { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useLogin } from '../hooks/useLogin';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    await login(email, password, isAdmin ? '/api/admin/login' : '/api/user/login', () => {
+      // After successful login, redirect the user to the appropriate page
+      if (isAdmin) {
+        navigate('/admin'); // Redirect to admin page
+      } else {
+        navigate('/'); // Redirect to regular user page
+      }
+    });
   };
 
   function handleCallbackResponse(response) {
@@ -67,10 +75,13 @@ const Login = () => {
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </label>
 
-          <Link to="/login" className="forgot-password">Forgot Password?</Link>
+          <Link className="forgot-password">Forgot Password?</Link>
         </div>
 
         <button disabled={isLoading}>Sign in</button>
+        <button type="button" onClick={() => setIsAdmin(!isAdmin)}>
+          {isAdmin ? 'Switch to User Login' : 'Switch to Admin Login'}
+        </button>
         {error && <div className="error">{error}</div>}
         <p className="OR"> OR </p>
         <p className="Signwith"> Sign in with </p>

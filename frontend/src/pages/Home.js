@@ -3,9 +3,9 @@ import { useBloodRequestsContext } from '../hooks/useBloodRequestsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import BloodRequestDetails from '../components/BloodRequestDetails';
 import BloodRequestForm from '../components/BloodRequestForm';
+
+
 import axios from 'axios';
-
-
 
 //icons
 import DonateIcon from '../assets/icons/bx_donate-blood.svg';
@@ -26,6 +26,7 @@ const Home = () => {
   const [available, setAvailable] = useState("");
   const [donationCooldown, setDonationCooldown] = useState("");
   const componentRef = useRef(null);
+
 
   useEffect(() => {
     const fetchBloodRequests = async () => {

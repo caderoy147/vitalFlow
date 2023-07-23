@@ -1349,9 +1349,9 @@ const useStyles = createUseStyles({
     boxShadow: '0px 4px 4px 0px rgba(165, 164, 164, 1) ',
   },
   Navbar: {
-    top: '52px',
-    left: '62px',
-    width: '1316px',
+    top: '6%',
+    right: '8%',
+    width: '110%',
     height: '71px',
     display: 'flex',
     position: 'absolute',

@@ -3,28 +3,50 @@
 // window first then wheels then door and pag send alwyas
 without this file walay structre so sa first windows,wheels,door but sa next basin ma door,wheels na ang format */
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const bloodRequestSchema = new Schema({
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   patientName: {
     type: String,
-    required: true
-  }, 
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
   bloodType: {
     type: String,
-    required: true
+    required: true,
   },
-  location: {
+  doctorName: {
     type: String,
-    required: true
+    required: true,
   },
-  phoneNumber: {
+  hospital: {
+    type: String,
+    required: true,
+  },
+  citizenship: {
+    type: String,
+    required: true,
+  },
+  bloodBagsNeeded: {
     type: Number,
-  }
-}, { timestamps: true })
+    required: true,
+  },
+  signatureImage: {
+    type: String, // Store the image as a Base64-encoded string
+  },
+}, { timestamps: true });
 
-
-module.exports = mongoose.model('BloodRequest',bloodRequestSchema)
-
+module.exports = mongoose.model('BloodRequest', bloodRequestSchema);
