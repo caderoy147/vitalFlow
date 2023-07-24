@@ -1,8 +1,9 @@
 const BloodDonation = require('../models/bloodDonationModel');
 const BloodRequest = require('../models/BloodRequestModel');
+const Profile = require('../models/profileModel'); // Import the Profile model
 
 const submitBloodDonationForm = async (req, res) => {
-  const { bloodRequestId, lastDonationDate, donatedPreviously, lastSixMonthsActivities, medicalHistory, medications, surgeryTransfusionHistory, agreedToTerms } = req.body;
+  const {profile, bloodRequestId, lastDonationDate, donatedPreviously, lastSixMonthsActivities, medicalHistory, medications, surgeryTransfusionHistory, agreedToTerms } = req.body;
 
   try {
     // Check if the specified bloodRequestId corresponds to an existing BloodRequest
@@ -14,16 +15,25 @@ const submitBloodDonationForm = async (req, res) => {
 
     // Check if the person is eligible to donate based on medical history
     if (medicalHistory) {
-      const { heartDiseases, diabetes, sexuallyTransmittedDiseases, lungDisease, allergicDisease, epilepsy, jaundice, faintingSpells, cancer, hepatitisBC, typhoid, tuberculosis, kidneyDisease, abnormalBleedingTendency, malaria } = medicalHistory;
-      
-      // Check for any medical conditions that might prevent blood donation
-      if (heartDiseases || diabetes || sexuallyTransmittedDiseases || lungDisease || allergicDisease || epilepsy || jaundice || faintingSpells || cancer || hepatitisBC || typhoid || tuberculosis || kidneyDisease || abnormalBleedingTendency || malaria) {
+      const medicalHistoryValues = Object.values(medicalHistory);
+      if (medicalHistoryValues.includes(true)) {
         return res.status(400).json({ error: 'You are not eligible to donate blood due to medical history.' });
       }
     }
 
+    // Get the user ID from the authenticated user's data (assuming it is available in req.user._id)
+    const userId = req.user._id;
+
+    // Check if the user has a profile
+    const existingProfile = await Profile.findOne({ user: userId });
+
+    if (!existingProfile) {
+      return res.status(400).json({ error: 'You cannot make a blood donation without a profile. Please create a profile first.' });
+    }
+
     // Create a new blood donation document
     const bloodDonation = await BloodDonation.create({
+      profile,
       bloodRequestId,
       lastDonationDate,
       donatedPreviously,
@@ -39,7 +49,6 @@ const submitBloodDonationForm = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
 // Rest of your code...
 
 

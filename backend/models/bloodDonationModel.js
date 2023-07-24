@@ -3,24 +3,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bloodDonationSchema = new Schema({
+  profile: { // Add a reference to the Profile model
+    type: Schema.Types.ObjectId,
+    ref: 'Profile',
+    required: true
+  },
   bloodRequestId: {
     type: Schema.Types.ObjectId,
     ref: 'BloodRequest',
     required: true
   },
   lastDonationDate: {
-    month: {
-      type: Number,
-      required: true
-    },
-    day: {
-      type: Number,
-      required: true
-    },
-    year: {
-      type: Number,
-      required: true
-    }
+    type: String, // Store the date as a string
+    required: true
   },
   donatedPreviously: {
     type: Boolean

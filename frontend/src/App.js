@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage';
-
+import BloodDonationFormPage from './pages/BloodDonationFormPage';
 
 
 
@@ -47,6 +47,7 @@ function App() {
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
             <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
             <Route path="/AboutUs" element={user ? <AboutUs /> : <Navigate to="/AboutUs" />} />
+            <Route path="/donate/:bloodRequestId" element={<BloodDonationFormPage />} />
           </Routes>
         </div>
       </BrowserRouter>
