@@ -32,6 +32,7 @@ function App() {
   //   );
   // }, []);
   const { user, isAdmin } = useAuthContext();
+  const {user2} = useAuthContext();
   console.log(user);
   return (
     <div className="App">
@@ -39,10 +40,10 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={user ? (isAdmin ? <AdminPage /> : <Home />) : <Navigate to="/login" />} />
+            <Route path="/home" element={user ? (isAdmin ? <AdminPage /> : <Home />) : <Navigate to="/login" />} />
             <Route path="/donate/:bloodRequestId" element={<BloodDonationFormPage />} />
             <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/login" />} />
-            <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
+            <Route path="/home" element={user ? <Home /> : <Navigate to="/home" />} />
             <Route path="/" element={!user || user? <LandingPage /> : <Navigate to="/LandingPage" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/home" />} />
