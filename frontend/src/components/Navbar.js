@@ -37,6 +37,7 @@ const Navbar = (props) => {
 
             </div>
           </ul>
+  const home = user ? "/home" : "/"
 
   return (
     
@@ -58,7 +59,7 @@ const Navbar = (props) => {
       <nav>
       
       <ul id="main">
-        <li><Link to="/"><span className="spanHome">Home</span></Link></li>
+        <li><Link to={home}><span className="spanHome">Home</span></Link></li>
         <li><Link to="/AboutUs"><span className="spanHome">About Us</span></Link></li>
         <li><Link to={linkPath} className="spanHome"> {activeNavLink} </Link>
           {drop}
