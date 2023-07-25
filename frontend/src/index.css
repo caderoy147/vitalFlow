@@ -831,4 +831,180 @@ h3{
   background: #FFF;
   box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.25);
   padding: 2%;
+  float: left
 }
+
+/* blood don details */
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Display two items side by side */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  float: left;
+}
+
+.blood-donation-details {
+  border: 2px solid #f00;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.blood-donation-details h4 {
+  color: #f00;
+}
+
+.blood-donation-details p {
+  margin: 5px 0;
+}
+
+.material-symbols-outlined {
+  color: #f00;
+  cursor: pointer;
+}
+
+a {
+  color: #f00;
+  text-decoration: none;
+}
+
+/* Profile Component */
+
+/* ProfileComponent CSS */
+.profileComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  border: 1px solid #B70000;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Adjusted width */
+  margin: 0 auto;
+}
+
+.profileComponent h2 {
+  color: #ff0000;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profileComponent form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileComponent label {
+  margin-bottom: 12px;
+  color: #000; /* Changed text color to black */
+  font-weight: 900;
+}
+
+/* Add a container for the "available" checkbox and label */
+.profileComponent .checkboxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align items with space between them */
+}
+
+.profileComponent input[type="checkbox"] {
+  margin-left: 8px; /* Add some spacing between the checkbox and label */
+}
+
+.profileComponent input {
+  width: 100%; /* Make the input boxes wider */
+  padding: 12px;
+  border: 1px solid #ff0000;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.profileComponent button {
+  padding: 12px 24px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.profileComponent button:hover {
+  background-color: #ff4444;
+}
+
+/* ProfileDisplay CSS */
+.profileDisplay {
+  padding: 20px;
+  border: 1px solid #B70000;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+  float: left;
+}
+
+.profileDisplay h2 {
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.profileDisplay p {
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.profileDisplay .label {
+  font-weight: bold;
+}
+
+.profileDisplay .label::after {
+  content: ":";
+}
+
+.profspan{
+  float: right;
+}
+.container {
+  overflow: hidden; /* This is added to clear the float */
+}
+
+.profileDisplay {
+  float: left;
+  width: 70%; /* Adjust the width as needed, here it takes 70% of the container's width */
+  /* Add any other styling you want for this section */
+}
+
+.profspan {
+  float: right;
+  width: 30%; /* Adjust the width as needed, here it takes 30% of the container's width */
+  /* Add any other styling you want for this section */
+}
+
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+  .profileDisplay {
+    max-width: 600px;
+  }
+}
+
+/* Media query for even larger screens, e.g., wide monitors */
+@media screen and (min-width: 1200px) {
+  .profileDisplay {
+    max-width: 1500px;
+  }
+}
+
+
+
+
+

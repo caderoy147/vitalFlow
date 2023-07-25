@@ -1,0 +1,40 @@
+/* BloodDonationDetails.css */
+.blood-donation-details {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: red;
+  }
+  
+  .blood-donation-details h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .blood-donation-details p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .blood-donation-details a {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .blood-donation-details a:hover {
+    background-color: darkred;
+  }
+  
+  .blood-donation-details span {
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  

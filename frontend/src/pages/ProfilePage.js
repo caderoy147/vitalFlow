@@ -36,14 +36,32 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
-      <h2>Profile</h2>
-      <p>First Name: {profile.firstName}</p>
-      <p>Blood Bags Donated: {profile.bloodBagsDonated}</p>
-      <p>Available: {profile.available ? 'Yes' : 'No'}</p>
-      <p>Donation Cooldown: {profile.donationCooldown}</p>
-      <ProfileComponent />
-    </div>
+  <div className="container">
+  <div className="profileDisplay">
+    <h2>Profile</h2>
+    <p>
+      <span className="label">First Name</span> {profile.firstName}
+    </p>
+    <p>
+      <span className="label">Blood Bags Donated</span>{" "}
+      {profile.bloodBagsDonated}
+    </p>
+    <p>
+      <span className="label">Available</span>{" "}
+      {profile.available ? "Yes" : "No"}
+    </p>
+    <p>
+      <span className="label">Donation Cooldown</span>{" "}
+      {profile.donationCooldown}
+    </p>
+  </div>
+  <div className="profspan">
+    <span><ProfileComponent /></span>
+  </div>
+</div>
+
+    
+    
   );
 };
 

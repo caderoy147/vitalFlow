@@ -36,14 +36,16 @@ const BloodDonationDetails = ({ bloodDonation }) => {
 
   console.log(bloodDonation._id);
   return (
-    <div className="blood-donation-details">
-      <h4>{/* Display relevant blood donation details, e.g., donor's name */}</h4>
-      <p><strong>Donated Previously: </strong>{bloodDonation.donatedPreviously ? "Yes" : "No"}</p>
-      <p><strong>Last Donation Date: </strong>{bloodDonation.lastDonationDate}</p>
-      <p><strong>Diabetes: </strong>{bloodDonation.medicalHistory.diabetes ? "Yes" : "No"}</p>
-      <Link to={`/editDonation/${bloodDonation._id}`}>Edit Blood Donation</Link>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+    <div class="grid-container">
+    <div class="blood-donation-details">
+      {/* <h4><!-- Display relevant blood donation details, e.g., donor's name --></h4> */}
+      <p><strong>Donated Previously: </strong><span id="donated-previous"></span></p>
+      <p><strong>Last Donation Date: </strong><span id="last-donation-date"></span></p>
+      <p><strong>Diabetes: </strong><span id="diabetes"></span></p>
+      <a id="edit-link" href="#">Edit Blood Donation</a>
+      <span class="material-symbols-outlined" id="delete-button">delete</span>
     </div>
+  </div>
   );
 };
 

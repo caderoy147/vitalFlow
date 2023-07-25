@@ -56,7 +56,7 @@ const AdminPage = () => {
         bloodDonations.map((bloodDonation) => (
           <BloodDonationDetails key={bloodDonation._id} bloodDonation={bloodDonation} />
         ))
-      ) : (
+      ) : ( 
         <p>No blood donation submissions available.</p>
       )}
       </div>
