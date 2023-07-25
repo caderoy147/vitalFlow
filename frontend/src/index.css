@@ -42,7 +42,7 @@ header a {
 .blood-request-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: var(--primary);
+  color: #B70000;
 }
 .blood-request-details p {
   margin: 0;
@@ -120,8 +120,9 @@ nav a {
 }
 nav button {
   background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: #F00;;
+  border: 2px solid;
+  border-color: #B70000;
   padding: 6px 10px;
   border-radius: 4px;
   font-family: "Poppins";
@@ -267,13 +268,9 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.25);
 }
-.blood-request-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
+
 .blood-request-details p {
   margin: 0;
   font-size: 0.9em;
@@ -449,17 +446,7 @@ nav {
 nav a {
   margin-left: 10px;
 }
-nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-family: "Poppins";
-  cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
-}
+
 
 .navi li{
   display:inline;
@@ -739,7 +726,7 @@ h3{
   font-family: Outfit;
   margin-top: 0;
   padding: 0;
-  color: #b70000;
+  color: #B70000;
   z-index: 40; /* Make sure the background is behind the content */
 }
 
@@ -749,3 +736,96 @@ h3{
 
 
 
+.bloodRequests .closeButton{
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 25px;
+  background: #F00;
+  width: 50%;
+  margin: 3% 25%;
+}
+
+.details-container {
+  max-height: 300px; /* Adjust the height as per your requirement */
+  overflow-y: auto;
+}
+
+.details-scroll {
+  padding: 10px;
+}
+
+.exit-button {
+  position: sticky;
+  top: 0;
+  margin-bottom: 10px;
+  /* background: var(--primary); */
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 25px;
+  background: #F00;
+  width: 20%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+.donations-view-admin{
+  border-radius: 40px;
+  background: #FFF;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.25);
+  padding: 2%;
+}
+
+.bloodRequests .closeButton{
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 25px;
+  background: #F00;
+  width: 50%;
+  margin: 3% 25%;
+}
+
+.details-container {
+  max-height: 300px; /* Adjust the height as per your requirement */
+  overflow-y: auto;
+}
+
+.details-scroll {
+  padding: 10px;
+}
+
+.exit-button {
+  position: sticky;
+  top: 0;
+  margin-bottom: 10px;
+  /* background: var(--primary); */
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 25px;
+  background: #F00;
+  width: 20%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+.donations-view-admin{
+  border-radius: 40px;
+  background: #FFF;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.25);
+  padding: 2%;
+}

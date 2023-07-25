@@ -1,5 +1,7 @@
 import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link
 
 //date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -7,6 +9,8 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const BloodRequestDetails = ({ bloodRequest }) => {
   const { dispatch } = useBloodRequestsContext()
   const { user } = useAuthContext()
+
+  const navigate = useNavigate();
 
   const handleClick = async() =>{
     if (!user) {
@@ -33,6 +37,7 @@ const BloodRequestDetails = ({ bloodRequest }) => {
       <p><strong>Location: </strong>{bloodRequest.location}</p>
       <p><strong>Phone Number </strong>:+63{bloodRequest.phoneNumber}</p>
       <p>{formatDistanceToNow(new Date(bloodRequest.createdAt), { addSuffix: true })}</p>
+      <Link to={`/donate/${bloodRequest._id}`}>Go to Blood Donation Form</Link>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
   )

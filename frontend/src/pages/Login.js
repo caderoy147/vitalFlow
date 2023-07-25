@@ -1,20 +1,28 @@
-import { useLogin } from "../hooks/useLogin";
 import React, { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useLogin } from '../hooks/useLogin';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
-    // Redirect to Home.js after login
-    window.location.href = "/Home.js";
+    await login(email, password, isAdmin ? '/api/admin/login' : '/api/user/login', () => {
+      // After successful login, redirect the user to the appropriate page
+      if (isAdmin) {
+        navigate('/admin'); // Redirect to admin page
+      } else {
+        navigate('/'); // Redirect to regular user page
+      }
+    });
   };
 
   function handleCallbackResponse(response) {
@@ -23,19 +31,18 @@ const Login = () => {
     console.log(userObject);
   }
 
-  useEffect(() => {
-    
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
-      callback: handleCallbackResponse
-    });
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   });
 
-    google.accounts.id.renderButton(
-      document.getElementById("signInDiv"),
-      { theme: "outline", size: "large" }
-    );
-  }, []);
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("signInDiv"),
+  //     { theme: "outline", size: "large" }
+  //   );
+  // }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -48,7 +55,6 @@ const Login = () => {
       </div>
       <h3 className="LUG">LOG IN TO YOUR ACCOUNT</h3>
       <div className="form-wrapper">
-        <label htmlFor="email"></label>
         <input
           type="email"
           id="email"
@@ -56,8 +62,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-
-        <label htmlFor="password"></label>
+      
         <div className="password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
@@ -70,10 +75,13 @@ const Login = () => {
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </label>
 
-          <a href="#" className="forgot-password">Forgot Password?</a>
+          <Link className="forgot-password">Forgot Password?</Link>
         </div>
 
         <button disabled={isLoading}>Sign in</button>
+        <button type="button" onClick={() => setIsAdmin(!isAdmin)}>
+          {isAdmin ? 'Switch to User Login' : 'Switch to Admin Login'}
+        </button>
         {error && <div className="error">{error}</div>}
         <p className="OR"> OR </p>
         <p className="Signwith"> Sign in with </p>
@@ -83,7 +91,7 @@ const Login = () => {
           <img src="./images/ms.png" alt="MS" className="img3" />
         </div>
       </div>
-      <p className="Signwith"> Don't have an account? <a href="/signup" className="noAcc"> Sign up</a></p>
+      <p className="Signwith"> Don't have an account?<Link to="/signup" className="noAcc">Sign up</Link></p>
     </form>
   );
 };

@@ -12,12 +12,17 @@ export const ProfileContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('/api/profile', {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
-        setProfile(response.data);
+        // If there's no user or the user is an admin, set the profile to null
+        if (!user || user.isAdmin) {
+          setProfile(null);
+        } else {
+          const response = await axios.get('/api/profile', {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          });
+          setProfile(response.data);
+        }
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -25,9 +30,7 @@ export const ProfileContextProvider = ({ children }) => {
       }
     };
 
-    if (user) {
-      fetchProfile();
-    }
+    fetchProfile();
   }, [user]);
 
   return (

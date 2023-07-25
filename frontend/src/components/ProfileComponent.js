@@ -14,7 +14,7 @@ const ProfileComponent = () => {
 
     try {
       // Perform API request to create the profile
-      const response = await axios.post(
+       await axios.post(
         "/api/profile",
         {
           firstName,

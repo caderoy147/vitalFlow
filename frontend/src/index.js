@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import './Styles.css';
 import './styles.scss';
+import './styles/BloodDonationForm.css';
 import App from './App';
-
-// Import the context providers
 import { BloodRequestsContextProvider } from './context/BloodRequestContext';
 import { AuthContextProvider } from './context/AuthContext';
 import { ProfileContextProvider } from './context/ProfileContext';
+import { BloodDonationsContextProvider } from './context/BloodDonationContext'; // Import the BloodDonationsContextProvider
 
 const root = createRoot(document.getElementById('root'));
 
@@ -16,8 +16,11 @@ root.render(
   <AuthContextProvider>
     <BloodRequestsContextProvider>
       <ProfileContextProvider>
-        <App />
+        <BloodDonationsContextProvider> {/* Wrap with BloodDonationsContextProvider */}
+          <App />
+        </BloodDonationsContextProvider>
       </ProfileContextProvider>
     </BloodRequestsContextProvider>
   </AuthContextProvider>
 );
+
