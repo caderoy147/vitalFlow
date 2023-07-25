@@ -58,7 +58,7 @@ const Navbar = (props) => {
       <nav>
       
       <ul id="main">
-        <li><Link to="/Home"><span className="spanHome">Home</span></Link></li>
+        <li><Link to="/"><span className="spanHome">Home</span></Link></li>
         <li><Link to="/AboutUs"><span className="spanHome">About Us</span></Link></li>
         <li><Link to={linkPath} className="spanHome"> {activeNavLink} </Link>
           {drop}
