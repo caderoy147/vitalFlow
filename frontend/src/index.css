@@ -295,11 +295,14 @@ header a {
   align-items: center;
   margin-top: 20px; /* Adjust the margin as needed */
 }
-
+.img2:hover {
+  
+}
 .img2{
   width: 70px; /* Adjust the width of the images */
   height: auto;
   margin: 0 10px; /* Add some margin between the images */
+  
 }
 .img3 {
   width: 50px; /* Adjust the width of the images */

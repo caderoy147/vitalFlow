@@ -12,9 +12,12 @@ import ProfilePage from './pages/ProfilePage';
 import BloodDonationFormPage from './pages/BloodDonationFormPage';
 import AdminPage from './pages/AdminPage';
 import LandingPage from './pages/LandingPage';
+import Success from './pages/Success';
 import './styles.scss';
 import './landingPage.css';
 import './aboutUs.css';
+import './SuccessfullySignedUp.css';
+import "./bloodRequestForm.css"; // Import the CSS file
 function App() {
   
   
@@ -40,6 +43,7 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
+            <Route path="/Success" element={!user ? <Success /> : <Navigate to="/LandingPage" />} />
             <Route path="/home" element={user ? (isAdmin ? <AdminPage /> : <Home />) : <Navigate to="/login" />} />
             <Route path="/donate/:bloodRequestId" element={<BloodDonationFormPage />} />
             <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/login" />} />
@@ -49,6 +53,7 @@ function App() {
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/home" />} />
             <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
             <Route path="/aboutus" element={!user || user ? <AboutUs /> : <Navigate to="/aboutus" />} />
+            <Route path="/LandingPage" element={!user || user ? <LandingPage /> : <Navigate to="/Success" />} />
           </Routes>
         </div>
       </BrowserRouter>

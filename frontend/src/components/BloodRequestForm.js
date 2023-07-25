@@ -106,30 +106,30 @@ const BloodRequestForm = ({ onClose }) => {
   };
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
+    <form className="custom-create" onSubmit={handleSubmit}>
       <h3>Enter A Blood Request</h3>
 
-      <label>Patient Name:</label>
+      <label className="custom-label">Patient Name:</label>
       <input
         type="text"
         onChange={(e) => setPatientName(e.target.value)}
         value={patientName}
-        className={emptyFields.includes("patientName") ? "error" : ""}
+        className={emptyFields.includes("patientName") ? "custom-error" : ""}
       />
 
-      <label>Age:</label>
+      <label className="custom-label">Age:</label>
       <input
         type="number"
         onChange={(e) => setAge(e.target.value)}
         value={age}
-        className={emptyFields.includes("age") ? "error" : ""}
+        className={emptyFields.includes("age") ? "custom-error" : ""}
       />
 
-      <label>Gender:</label>
+      <label className="custom-label">Gender:</label>
       <select
         onChange={(e) => setGender(e.target.value)}
         value={gender}
-        className={`select-dropdown ${emptyFields.includes("gender") ? "error" : ""}`}
+        className={`custom-select-dropdown ${emptyFields.includes("gender") ? "custom-error" : ""}`}
       >
         <option value="">Select gender</option>
         <option value="Male">Male</option>
@@ -137,11 +137,11 @@ const BloodRequestForm = ({ onClose }) => {
         <option value="Other">Other</option>
       </select>
 
-      <label>Blood Type:</label>
+      <label className="custom-label">Blood Type:</label>
       <select
         onChange={(e) => setBloodType(e.target.value)}
         value={bloodType}
-        className={`select-dropdown ${emptyFields.includes("bloodType") ? "error" : ""}`}
+        className={`custom-select-dropdown ${emptyFields.includes("bloodType") ? "custom-error" : ""}`}
       >
         <option value="">Select a blood type</option>
         <option value="A+">A+</option>
@@ -154,62 +154,62 @@ const BloodRequestForm = ({ onClose }) => {
         <option value="O-">O-</option>
       </select>
 
-      <label>Doctor Name:</label>
+      <label className="custom-label">Doctor Name:</label>
       <input
         type="text"
         onChange={(e) => setDoctorName(e.target.value)}
         value={doctorName}
-        className={emptyFields.includes("doctorName") ? "error" : ""}
+        className={emptyFields.includes("doctorName") ? "custom-error" : ""}
       />
 
-      <label>Hospital:</label>
+      <label className="custom-label">Hospital:</label>
       <select
         onChange={(e) => setHospital(e.target.value)}
         value={hospital}
-        className={`select-dropdown ${emptyFields.includes("hospital") ? "error" : ""}`}
+        className={`custom-select-dropdown ${emptyFields.includes("hospital") ? "custom-error" : ""}`}
       >
         <option value="">Select hospital</option>
         <option value="Chonghua">Chonghua</option>
         <option value="Cebu City Hospital">Cebu City Hospital</option>
       </select>
 
-      <label>Citizenship:</label>
+      <label className="custom-label">Citizenship:</label>
       <input
         type="text"
         onChange={(e) => setCitizenship(e.target.value)}
         value={citizenship}
-        className={emptyFields.includes("citizenship") ? "error" : ""}
+        className={emptyFields.includes("citizenship") ? "custom-error" : ""}
       />
 
-      <label>Blood Bags Needed:</label>
+      <label className="custom-label">Blood Bags Needed:</label>
       <input
         type="number"
         onChange={(e) => setBloodBagsNeeded(e.target.value)}
         value={bloodBagsNeeded}
-        className={emptyFields.includes("bloodBagsNeeded") ? "error" : ""}
+        className={emptyFields.includes("bloodBagsNeeded") ? "custom-error" : ""}
       />
 
-      <label>Location:</label>
+      <label className="custom-label">Location:</label>
       <input
         type="text"
         onChange={(e) => setLocation(e.target.value)}
         value={location}
-        className={emptyFields.includes("location") ? "error" : ""}
+        className={emptyFields.includes("location") ? "custom-error" : ""}
       />
 
-      <label>Phone Number:</label>
-      <div className="phone-number-input">
+      <label className="custom-label">Phone Number:</label>
+      <div className="custom-phone-number-input">
         <input
           type="text"
           maxLength={11}
           placeholder="+63"
           onChange={(e) => setPhoneNumber(e.target.value)}
           value={phoneNumber}
-          className={emptyFields.includes("phoneNumber") ? "error" : ""}
+          className={emptyFields.includes("phoneNumber") ? "custom-error" : ""}
         />
       </div>
 
-      <label>Signature Image:</label>
+      <label className="custom-label">Signature Image:</label>
       <input
         type="file"
         accept="image/*"
@@ -219,10 +219,10 @@ const BloodRequestForm = ({ onClose }) => {
         <img src={signatureImage} alt="Signature Preview" style={{ width: "100px", height: "100px" }} />
       )}
 
-      <div className="AddBloodRequestButtons">
-        <button>Add Blood Request</button>
-        {error && <div className="error">{error}</div>}
-        <button onClick={handleClose}>Close Form</button>
+      <div className="custom-AddBloodRequestButtons">
+        <button className="custom-add-button">Add Blood Request</button>
+        {error && <div className="custom-error">{error}</div>}
+        <button className="custom-close-button" onClick={handleClose}><span className="custom-tx">Close Form</span></button>
       </div>    
     </form>
   );

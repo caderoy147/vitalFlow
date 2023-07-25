@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -15,11 +18,10 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(email, password);
+    navigate('/Success');
   };
 
 
-
-  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

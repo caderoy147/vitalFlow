@@ -20,7 +20,7 @@ const Login = () => {
       if (isAdmin) {
         navigate('/admin'); // Redirect to admin page
       } else {
-        navigate('/'); // Redirect to regular user page
+        navigate('/home'); // Redirect to regular user page
       }
     });
   };
@@ -31,19 +31,27 @@ const Login = () => {
     console.log(userObject);
   }
 
-  // useEffect(() => {
-  //   /* global google */
-  //   google.accounts.id.initialize({
-  //     client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
-  //     callback: handleCallbackResponse
-  //   });
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
 
-  //   google.accounts.id.renderButton(
-  //     document.getElementById("signInDiv"),
-  //     { theme: "outline", size: "large" }
-  //   );
-  // }, []);
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large" }
+    );
 
+    // Add event listener to the image element
+    // const imageElement = document.querySelector(".img2");
+    // imageElement.addEventListener("click", () => {
+    //   // Trigger the login popup when the image is clicked
+    //   google.accounts.id.prompt();
+    // });
+  }, []);
+   
+   
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -86,9 +94,9 @@ const Login = () => {
         <p className="OR"> OR </p>
         <p className="Signwith"> Sign in with </p>
         <div className="image-wrapper2">
-          <img src="./images/google.png" alt="Google" className="img2" />
+          {/* <img src="./images/google.png" alt="Google" className="img2" /> */}
           <div id="signInDiv"></div>
-          <img src="./images/ms.png" alt="MS" className="img3" />
+          {/* <img src="./images/ms.png" alt="MS" className="img3" /> */}
         </div>
       </div>
       <p className="Signwith"> Don't have an account?<Link to="/signup" className="noAcc">Sign up</Link></p>
