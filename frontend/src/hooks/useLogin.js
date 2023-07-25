@@ -25,8 +25,11 @@ export const useLogin = () => {
         // Save the user to local storage
         localStorage.setItem('user', JSON.stringify(json));
 
-        // Update the auth context
-        dispatch({ type: 'LOGIN', payload: json });
+        // Determine if the user is an admin or not based on the response
+        const isAdmin = endpoint === '/api/admin/login';
+
+        // Update the auth context with both user and admin information
+        dispatch({ type: 'LOGIN', payload: { user: json, isAdmin } });
 
         // Update loading state
         setIsLoading(false);
