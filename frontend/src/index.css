@@ -169,11 +169,7 @@ form.signup, form.login {
   --primary: #1aac83;
   --error: #e7195a;
 }
-body {
-  background: #f1f1f1;
-  margin: 0;
-  font-family: "Poppins";
-}
+
 header {
   background: #ffffff;
   width: auto;
@@ -974,7 +970,7 @@ a {
   float: right;
 }
 .container {
-  overflow: hidden; /* This is added to clear the float */
+  /*overflow: hidden;  This is added to clear the float */
 }
 
 .profileDisplay {
