@@ -15,14 +15,9 @@ import AdminPage from './pages/AdminPage';
 
 
 function App() {
-  const [user2, setUser] = useState({});
   
-  function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-  }
+  
+
   // useEffect(() => {
   //   /* global google */
   //   google.accounts.id.initialize({
@@ -36,12 +31,12 @@ function App() {
   //   );
   // }, []);
   const { user, isAdmin } = useAuthContext();
-  
+  console.log(user);
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <img src={user2.picture}></img>
+        
         <div className="pages">
           <Routes>
             <Route path="/" element={user ? (isAdmin ? <AdminPage /> : <Home />) : <Navigate to="/login" />} />
