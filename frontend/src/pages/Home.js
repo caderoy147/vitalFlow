@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useBloodRequestsContext } from '../hooks/useBloodRequestsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../hooks/useUserAuth';
 import BloodRequestDetails from '../components/BloodRequestDetails';
 import BloodRequestForm from '../components/BloodRequestForm';
 
@@ -90,6 +90,10 @@ const Home = () => {
   const handleCloseAllDetails = () => {
     setShowDetails(false);
   };
+
+  if (!bloodRequests) {
+    return <div>Loading...</div>; // Or some other loading indicator while data is being fetched
+  }
 
   return (
     <div className="home">

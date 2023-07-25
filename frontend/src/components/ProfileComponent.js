@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/useUserAuth";
 
 const ProfileComponent = () => {
   const { user } = useAuthContext(); // Assuming you have an authentication context available

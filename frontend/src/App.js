@@ -1,50 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuthContext } from './hooks/useAuthContext';
-import { useEffect, useState } from 'react';
-import jwt_decode from "jwt-decode";
+import { useAuthContext } from './hooks/useUserAuth';
+import { useAdminAuth } from './hooks/useAdminAuth';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
-import Login from './pages/Login';
+
+import UserLoginPage from './pages/UserLoginPage';
+import AdminLoginPage from './pages/AdminLogin';
+
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage';
 import BloodDonationFormPage from './pages/BloodDonationFormPage';
 import AdminPage from './pages/AdminPage';
 
-
-
 function App() {
-  
-  
+  const { user } = useAuthContext();
 
-  // useEffect(() => {
-  //   /* global google */
-  //   google.accounts.id.initialize({
-  //     client_id: "318301048533-eo90o3gavqu22cgsg6vuc87e65man0u3.apps.googleusercontent.com",
-  //     callback: handleCallbackResponse
-  //   });
+  const { isAdmin } = useAdminAuth();// Destructure isAdmin and adminLogin
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
 
-  //   google.accounts.id.renderButton(
-  //     document.getElementById("signInDiv"),
-  //     { theme: "outline", size: "large" }
-  //   );
-  // }, []);
-  const { user, isAdmin } = useAuthContext();
   console.log(user);
+  console.log(isAdmin);
+
+  const switchToAdminLogin = () => {
+    setShowAdminLogin(true);
+  };
+
+  const switchToUserLogin = () => {
+    setShowAdminLogin(false);
+  };
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        
+
         <div className="pages">
           <Routes>
-            <Route path="/" element={user ? (isAdmin ? <AdminPage /> : <Home />) : <Navigate to="/login" />} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" /> } />
-            <Route path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to="/login" />} />
+          <Route
+              path="/"
+              element={
+                user ? (isAdmin ? <AdminPage /> : <Home />) : showAdminLogin ? (
+                  <AdminLoginPage onSwitchToUser={switchToUserLogin} />
+                ) : (
+                  <UserLoginPage onSwitchToAdmin={switchToAdminLogin} />
+                )
+              }
+            />
+            {/* Rest of the routes */}
+            <Route path="/admin" element={isAdmin ? <AdminPage /> : <AdminLoginPage />} />
             <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
             <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
-            <Route path="/AboutUs" element={user ? <AboutUs /> : <Navigate to="/AboutUs" />} />
+            <Route path="/aboutUs" element={user ? <AboutUs /> : <Navigate to="/aboutUs" />} />
             <Route path="/donate/:bloodRequestId" element={<BloodDonationFormPage />} />
           </Routes>
         </div>
@@ -52,7 +59,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;

@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { useAuthContext } from './useAuthContext'
+import { useAuthContext } from './useUserAuth'
 
 export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
+  const [isSignupSuccessful, setIsSignupSuccessful] = useState(false); // New state to track successful signup
 
   const signup = async (email, password) => {
     setIsLoading(true)
@@ -16,7 +17,8 @@ export const useSignup = () => {
       body: JSON.stringify({ email, password })
     })
     const json = await response.json()
-
+    console.log('Signup Response:', response);
+    console.log('Signup Response JSON:', json);
     if (!response.ok) {
       setIsLoading(false)
       setError(json.error)
@@ -28,10 +30,13 @@ export const useSignup = () => {
       // update the auth context
       dispatch({type: 'LOGIN', payload: json})
 
+      // Set signup success flag
+      setIsSignupSuccessful(true);
+
       // update loading state
       setIsLoading(false)
     }
   }
 
-  return { signup, isLoading, error }
+  return { signup, isLoading, error, isSignupSuccessful }
 }

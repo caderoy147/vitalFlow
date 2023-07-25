@@ -1,5 +1,5 @@
 import { useBloodRequestsContext } from "../hooks/useBloodRequestsContext"
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../hooks/useUserAuth'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // Import Link
 
@@ -28,6 +28,10 @@ const BloodRequestDetails = ({ bloodRequest }) => {
     if (response.ok) {
       dispatch({type:'DELETE_BLOODREQUEST', payload:  json})
     }
+  }
+
+  if (!bloodRequest) {
+    return <div>Loading...</div>; // Or some other loading indicator while data is being fetched
   }
 
   return(

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../hooks/useUserAuth'
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 

@@ -1,14 +1,15 @@
-import { useSignup } from "../hooks/useSignup";
 import { useEffect, useState } from 'react';
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Navigate } from 'react-router-dom'; // Import Navigate from React Router
+import { useSignup } from '../hooks/useSignup'; // Import the useSignup hook
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { signup, error, isLoading } = useSignup();
+  const { signup, error, isLoading, isSignupSuccessful } = useSignup();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -100,6 +101,7 @@ const SignUp = () => {
       <p className="Signwith">
         Already have an account? <a href="/login" className="noAcc"> Log in</a>
       </p>
+      {isSignupSuccessful && <Navigate to="/" replace />}
     </form>
   );
 };

@@ -1,7 +1,7 @@
 // AdminPage.js
 import React, { useState, useEffect } from 'react';
 import BloodDonationDetails from '../components/BloodDonationDetails';
-import { useAuthContext } from '../hooks/useAuthContext'; // Import the useAuthContext hook
+import { useAuthContext } from '../hooks/useUserAuth'; // Import the useAuthContext hook
 import { useBloodRequestsContext } from '../hooks/useBloodRequestsContext';
 import BloodRequestDetails from '../components/BloodRequestDetails';
 
@@ -44,7 +44,10 @@ const AdminPage = () => {
     }
   }, [user, dispatch]);
   
-
+  if (!bloodRequests) {
+    return <div>Loading...</div>; // Or some other loading indicator while data is being fetched
+  }
+  console.log(bloodDonations)
   return (
     <div className="admin-page">
       <h1>Welcome to the Admin Dashboard</h1>

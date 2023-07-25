@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { useAuthContext } from './useAuthContext';
+import { useAuthContext} from './useUserAuth';
 
-export const useLogin = () => {
+export const useUserLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthContext();
+  const { dispatch } = useAuthContext(); // Use useUserAuth instead of useAuthContext
 
-  const login = async (email, password, endpoint) => {
+  const userLogin = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -25,11 +25,8 @@ export const useLogin = () => {
         // Save the user to local storage
         localStorage.setItem('user', JSON.stringify(json));
 
-        // Determine if the user is an admin or not based on the response
-        const isAdmin = endpoint === '/api/admin/login';
-
-        // Update the auth context with both user and admin information
-        dispatch({ type: 'LOGIN', payload: { user: json, isAdmin } });
+        // Update the user auth context with user information
+        dispatch({ type: 'LOGIN', payload: { user: json } });
 
         // Update loading state
         setIsLoading(false);
@@ -40,5 +37,5 @@ export const useLogin = () => {
     }
   };
 
-  return { login, isLoading, error };
+  return { userLogin, isLoading, error };
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../hooks/useUserAuth';
 import ProfileComponent from '../components/ProfileComponent';
 
 const ProfilePage = () => {
