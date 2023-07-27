@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useBloodDonationsContext } from "../hooks/useBloodDonationsContext";
 import { useAuthContext } from "../hooks/useAuthContext"; // Add this import
-
+import { useNavigate } from 'react-router-dom';
 
 const UserBloodDonationForm = () => {
   const { bloodRequestId } = useParams();
@@ -13,6 +13,9 @@ const UserBloodDonationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const { user } = useAuthContext();
   const [profile, setProfile] = useState(null);
+  const [isFormVisible, setFormVisible] = useState(true); // State variable to manage the visibility of the form
+  const navigate = useNavigate();
+
 
   const [formData, setFormData] = useState({
     bloodRequestId: bloodRequestId,
@@ -113,6 +116,7 @@ const UserBloodDonationForm = () => {
       });
   
       console.log('Blood donation form submitted successfully:', response.data);
+      setErrorMessage('Blood donation form submitted successfully:');
       dispatch({ type: "ADD_BLOOD_DONATION", payload: response.data });
       // Optionally, you can show a success message to the user.
     } catch (error) {
@@ -130,6 +134,11 @@ const UserBloodDonationForm = () => {
     }
   };
   
+  const handleFormClose = () => {
+    // Reset the success message and show the form again
+    setFormVisible((prevFormVisible) => !prevFormVisible);
+    navigate('/home');
+  };
 
   const handleDateChange = (name, value) => {
     // Create a new Date object using the extracted day, month, and year values
@@ -165,6 +174,8 @@ const UserBloodDonationForm = () => {
 
 
   return (
+    <div>
+    {isFormVisible && (
     <form onSubmit={handleSubmit} className="form-donate">
       {/* Blood Request ID */}
       <label htmlFor="bloodRequestId">Blood Request ID:</label>
@@ -482,8 +493,11 @@ const UserBloodDonationForm = () => {
       />
     {errorMessage && <div className="error-message">{errorMessage}</div>}
       <button type="submit">Submit</button>
+      <button className='close-button-form' onClick={handleFormClose}>Close Form</button>
     </form>
-    
+    )}
+   
+    </div>
   );
 };
 

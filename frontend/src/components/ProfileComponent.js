@@ -47,7 +47,7 @@ const ProfileComponent = () => {
     <div className="profileComponent">
     <h2>Create Your Profile</h2>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">First Name:</label>
+      <label htmlFor="firstName">Full Name:</label>
       <input
         type="text"
         id="firstName"

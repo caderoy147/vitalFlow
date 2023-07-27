@@ -34,8 +34,9 @@ const BloodRequestDetails = ({ bloodRequest }) => {
     <div className="blood-request-details">
       <h4>{bloodRequest.patientName}</h4>
       <p><strong>Blood Type: </strong>{bloodRequest.bloodType}</p>
-      <p><strong>Location: </strong>{bloodRequest.location}</p>
+      <p><strong>Location: </strong>{bloodRequest.hospital}</p>
       <p><strong>Phone Number </strong>:+63{bloodRequest.phoneNumber}</p>
+      
       <p>{formatDistanceToNow(new Date(bloodRequest.createdAt), { addSuffix: true })}</p>
       <Link to={`/donate/${bloodRequest._id}`}>Go to Blood Donation Form</Link>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
